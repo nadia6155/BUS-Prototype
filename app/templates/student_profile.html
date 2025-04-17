@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% import "bootstrap_wtf.html" as wtf %}
+
+{% block content %}
+<h1>Student Profile Page</h1>
+
+<h3>Hello {{ current_user.first_name }}!</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Add Hobbies and Interests</th>
+        </tr>
+    </thead>
+    {% for item in student %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.first_name }}</td>
+            <td>{{ item.last_name }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.phone }}</td>
+            <td>
+                <form action="{{ url_for('student_profile', studentID=current_user.id) }}" method="post">
+                    {{ choose_form.csrf_token() }}
+                    {{ choose_form.choice(value=item.id) }}
+                    <button class="btn" type="submit">
+                        <i class="bi bi-plus-square"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h4>Your Hobbies & Interests</h4>
+
+<div class="row">
+    <div class="col-lg-3">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Hobbies</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        {% for hobby in hobbies_list %}
+        <tr>
+            <td></td>
+            <td> {{ hobby }}</td>
+            <td>
+                <button class="btn" type="submit">
+                        <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+
+    <div class="col-lg-3">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Interests</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        {% for interest in interests_list %}
+        <tr>
+            <td></td>
+            <td> {{ interest }}</td>
+            <td>
+                <button class="btn" type="submit">
+                            <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+
+
+
+{% if choose_form.choice.data == student_id|string %}
+<h4>Add your hobbies and interests below:</h4>
+<div class="container">
+    <form method="POST" action="{{ url_for('student_profile', studentID=current_user.id) }}" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="row">
+
+            <div class="col-md-6">
+            {{ wtf.form_field(form.hobbies, False) }}
+            </div>
+
+            <div class="col-md-6">
+            {{ wtf.form_field(form.interests, False) }}
+            </div>
+        </div>
+
+        <div class="col-12 mt-2">
+        {{ wtf.form_field(form.submit, False) }}
+        </div>
+    </form>
+</div>
+{% endif %}
+
+
+
+{% endblock %}
