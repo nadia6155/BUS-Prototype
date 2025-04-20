@@ -46,27 +46,66 @@ def student_profile(studentID):
 
     hobbies_list = []
     for hobby in student_hobby:
-        hobbies_list.append(hobby.hobbies)
+        each_hobby = []
+        each_hobby.append(hobby.id)
+        each_hobby.append(hobby.hobbies)
+        hobbies_list.append(each_hobby)
 
     q_interest = db.select(Interests).where(Interests.user_id == studentID)
     student_interest = db.session.scalars(q_interest)
+    print(student_interest)
 
     interests_list = []
     for interest in student_interest:
-        interests_list.append(interest.interests)
+        each_interest = []
+        each_interest.append(interest.id)
+        each_interest.append(interest.interests)
+        interests_list.append(each_interest)
 
     if form.validate_on_submit():
+
+        new_hobby_added = False
+        hobby_exists = False
+
+        existing_hobbies = []
+        for hobby in current_user.hobbies:
+            existing_hobbies.append(hobby.hobbies)
+
         for each_hobby in form.hobbies.data:
-            hobby = Hobbies(hobbies=each_hobby.strip(), user_id=current_user.id)
-            db.session.add(hobby)
+            if each_hobby not in existing_hobbies:
+                hobby = Hobbies(hobbies=each_hobby.strip(), user_id=current_user.id)
+                db.session.add(hobby)
+                new_hobby_added = True
+            else:
+                hobby_exists = True
+
+        if new_hobby_added:
+            flash('Hobbies added successfully!', 'success')
+        if hobby_exists:
+            flash('Hobbies already exists!', 'danger')
+
+        new_interest_added = False
+        interest_exists = False
+
+        existing_interests = []
+        for interest in current_user.interests:
+            existing_interests.append(interest.interests)
 
         for each_interest in form.interests.data:
-            interest = Interests(interests=each_interest.strip(), user_id=current_user.id)
-            db.session.add(interest)
+            if each_interest not in existing_interests:
+                interest = Interests(interests=each_interest.strip(), user_id=current_user.id)
+                db.session.add(interest)
+                new_interest_added = True
+            else:
+                interest_exists = True
+
+        if new_interest_added:
+            flash('Interests added successfully!', 'success')
+        if interest_exists:
+            flash('Interests already exists!', 'danger')
 
         db.session.commit()
 
-        flash('Hobbies and Interests added, successfully!', 'success')
         return redirect(url_for('student_profile', studentID=current_user.id))
     return render_template('student_profile.html', title='Student Profile', form=form, student=student, choose_form=choose_form, student_id=str(studentID), hobbies_list=hobbies_list, interests_list=interests_list)
 

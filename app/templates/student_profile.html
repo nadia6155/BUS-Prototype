@@ -52,8 +52,8 @@
 
         {% for hobby in hobbies_list %}
         <tr>
-            <td></td>
-            <td> {{ hobby }}</td>
+            <td>{{ hobby[0] }}</td>
+            <td>{{ hobby[1] }}</td>
             <td>
                 <button class="btn" type="submit">
                         <i class="bi bi-trash"></i>
@@ -77,8 +77,8 @@
 
         {% for interest in interests_list %}
         <tr>
-            <td></td>
-            <td> {{ interest }}</td>
+            <td>{{ interest[0] }}</td>
+            <td>{{ interest[1] }}</td>
             <td>
                 <button class="btn" type="submit">
                             <i class="bi bi-trash"></i>
