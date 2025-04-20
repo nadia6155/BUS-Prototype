@@ -66,6 +66,7 @@ def student_profile(studentID):
 
         db.session.commit()
 
+        flash('Hobbies and Interests added, successfully!', 'success')
         return redirect(url_for('student_profile', studentID=current_user.id))
     return render_template('student_profile.html', title='Student Profile', form=form, student=student, choose_form=choose_form, student_id=str(studentID), hobbies_list=hobbies_list, interests_list=interests_list)
 
