@@ -53,7 +53,6 @@ def student_profile(studentID):
 
     q_interest = db.select(Interests).where(Interests.user_id == studentID)
     student_interest = db.session.scalars(q_interest)
-    print(student_interest)
 
     interests_list = []
     for interest in student_interest:
