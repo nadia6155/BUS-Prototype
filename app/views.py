@@ -79,10 +79,10 @@ def student_profile(studentID):
             else:
                 hobby_exists = True
 
-        # if new_hobby_added:
-        #     flash('Hobbies added successfully!', 'success')
-        # if hobby_exists:
-        #     flash('Hobbies already exists!', 'danger')
+        if new_hobby_added:
+            flash('Hobbies added successfully!', 'success')
+        if hobby_exists:
+            flash('Hobbies already exists!', 'danger')
 
         new_interest_added = False
         interest_exists = False
