@@ -12,6 +12,8 @@ import datetime
 
 class ChooseForm(FlaskForm):
     choice = HiddenField('Choice')
+    hobby_or_interest = HiddenField('either')
+
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
