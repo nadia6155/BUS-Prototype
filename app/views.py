@@ -61,8 +61,8 @@ def student_profile(studentID):
         each_interest.append(interest.interests)
         interests_list.append(each_interest)
 
+    #Adding Hobbies/Interests
     if form.validate_on_submit():
-
         new_hobby_added = False
         hobby_exists = False
 
@@ -104,9 +104,33 @@ def student_profile(studentID):
             flash('Interests already exists!', 'danger')
 
         db.session.commit()
-
         return redirect(url_for('student_profile', studentID=current_user.id))
+
+    #Deleting hobbies and Interests
+    if choose_form.validate_on_submit():
+
+        if choose_form.hobby_or_interest.data == 'hobby':
+            q = db.select(Hobbies).where(Hobbies.id == int(choose_form.choice.data))
+            hobby = db.session.scalar(q)
+
+            if hobby:
+                db.session.delete(hobby)
+                db.session.commit()
+                flash('Hobby deleted successfully!', 'info')
+                return redirect(url_for('student_profile', studentID=current_user.id))
+
+        elif choose_form.hobby_or_interest.data == 'interest':
+            q = db.select(Interests).where(Interests.id == int(choose_form.choice.data))
+            interest = db.session.scalar(q)
+
+            if interest:
+                db.session.delete(interest)
+                db.session.commit()
+                flash('Interest deleted successfully!', 'info')
+                return redirect(url_for('student_profile', studentID=current_user.id))
+
     return render_template('student_profile.html', title='Student Profile', form=form, student=student, choose_form=choose_form, student_id=str(studentID), hobbies_list=hobbies_list, interests_list=interests_list)
+
 
 @app.route('/logout')
 def logout():
