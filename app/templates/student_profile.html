@@ -55,9 +55,15 @@
             <td>{{ hobby[0] }}</td>
             <td>{{ hobby[1] }}</td>
             <td>
+                <form action="{{ url_for('student_profile', studentID=current_user.id) }}" method="post">
+                {{ choose_form.csrf_token() }}
+                {{ choose_form.choice(value=hobby[0] )}}
+                {{ choose_form.hobby_or_interest(value='hobby') }}
                 <button class="btn" type="submit">
-                        <i class="bi bi-trash"></i>
+                    <i class="bi bi-trash"></i>
                 </button>
+            </form>
+
             </td>
         </tr>
         {% endfor %}
@@ -80,9 +86,15 @@
             <td>{{ interest[0] }}</td>
             <td>{{ interest[1] }}</td>
             <td>
+               <form action="{{ url_for('student_profile', studentID=current_user.id) }}" method="post">
+                {{ choose_form.csrf_token() }}
+                {{ choose_form.choice(value=interest[0] )}}
+                {{ choose_form.hobby_or_interest(value='interest') }}
                 <button class="btn" type="submit">
-                            <i class="bi bi-trash"></i>
+                    <i class="bi bi-trash"></i>
                 </button>
+            </form>
+
             </td>
         </tr>
         {% endfor %}
