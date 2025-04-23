@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, send_file, send_from_directory
 from app import app
 from app.models import User, Hobbies, Interests
-from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm
+from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm
 from flask_login import current_user, login_user, logout_user, login_required, fresh_login_required
 import sqlalchemy as sa
 from app import db
@@ -38,6 +38,8 @@ def login():
 def student_profile(studentID):
     form = AddHobbiesAndInterestsForm()
     choose_form = ChooseForm()
+    edit_form = EditPersonalDetailsForm()
+
     q = db.select(User).where(User.id == studentID)
     student = db.session.scalars(q)
 
@@ -129,7 +131,28 @@ def student_profile(studentID):
                 flash('Interest deleted successfully!', 'info')
                 return redirect(url_for('student_profile', studentID=current_user.id))
 
-    return render_template('student_profile.html', title='Student Profile', form=form, student=student, choose_form=choose_form, student_id=str(studentID), hobbies_list=hobbies_list, interests_list=interests_list)
+    #Edit personal details
+    if edit_form.validate_on_submit() and edit_form.edit.data == current_user.id:
+        q = db.select(User).where(User.id == current_user.id)
+        user = db.session.scalar(q)
+        if user:
+            user.first_name = edit_form.first_name.data
+            user.last_name = edit_form.last_name.data
+            user.email = edit_form.email.data
+            user.phone = edit_form.phone.data
+            db.session.commit()
+            flash('User details updated successfully!', 'success')
+            return redirect(url_for('student_profile', studentID=current_user.id))
+        else:
+            edit_form.first_name.data = user.first_name
+            edit_form.last_name.data = user.last_name
+            edit_form.email.data = user.email
+            edit_form.phone.data = user.phone
+            edit_form.edit.data = user.id
+
+    return render_template('student_profile.html', title='Student Profile', form=form, student=student,
+                           choose_form=choose_form, edit_form=edit_form, student_id=str(studentID), hobbies_list=hobbies_list,
+                           interests_list=interests_list)
 
 
 @app.route('/logout')
