@@ -56,6 +56,19 @@ class RegisterForm(FlaskForm):
         if db.session.scalar(q):
             raise ValidationError("Email address already taken, please choose another")
 
+class EditPersonalDetailsForm(FlaskForm):
+    first_name = StringField('First Name')
+    last_name = StringField('Last Name')
+    email = StringField('Email')
+    phone = StringField('Phone Number')
+    # password
+    # age = IntegerField('Age')
+    # emergency_name = StringField('Emergency Name')
+    # emergency_phone = StringField('Alternate Phone Number')
+    submit = SubmitField('Update')
+    edit = HiddenField('Edit', default='-1')  # default = -1 means to CREATE/ADD
+
+
 class AddHobbiesAndInterestsForm(FlaskForm):
     hobbies = SelectMultipleField('Select your hobbies', choices=[
                                                       ('Badminton', 'Badminton'),

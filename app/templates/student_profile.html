@@ -15,6 +15,7 @@
             <th>Email</th>
             <th>Phone</th>
             <th>Add Hobbies and Interests</th>
+            <th>Edit Personal Details</th>
         </tr>
     </thead>
     {% for item in student %}
@@ -33,9 +34,39 @@
                     </button>
                 </form>
             </td>
+            <td>
+             <form action="{{ url_for('student_profile', studentID=current_user.id) }}" method="post">
+                {{ choose_form.csrf_token() }}
+                {{ choose_form.choice(value=item.id) }}
+                <button class="btn" type="submit">
+                    <i class="bi bi-pen"></i>
+                </button>
+            </form>
+        </td>
         </tr>
     {% endfor %}
 </table>
+
+{% if edit_form %}
+{% if choose_form.choice.data == student_id|string %}
+<h2 class="mt-5">Edit personal details</h2>
+<div class="container row justify-content-start col-6">
+    <form method="POST" action="{{ url_for('student_profile', studentID=current_user.id) }}" novalidate>
+        {{ edit_form.hidden_tag() }}
+        {{ wtf.form_field(edit_form.first_name, False) }}
+        {{ wtf.form_field(edit_form.last_name, False) }}
+        {{ wtf.form_field(edit_form.email, False) }}
+        {{ wtf.form_field(edit_form.phone, False) }}
+        {{ wtf.form_field(edit_form.submit, False) }}
+        {% if edit_form.edit.data != '-1' %}
+        <div>
+            <a href="{{ url_for('student_profile', studentID=current_user.id) }}" class="btn btn-secondary">Cancel Edit</a>
+        </div>
+        {% endif %}
+    </form>
+</div>
+{% endif %}
+{% endif %}
 
 <h4>Your Hobbies & Interests</h4>
 
@@ -103,7 +134,7 @@
 </div>
 
 
-
+{% if form %}
 {% if choose_form.choice.data == student_id|string %}
 <h4>Add your hobbies and interests below:</h4>
 <div class="container">
@@ -125,6 +156,7 @@
         </div>
     </form>
 </div>
+{% endif %}
 {% endif %}
 
 
