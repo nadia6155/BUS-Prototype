@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, send_file, send_from_directory
 from app import app
-from app.models import User, Hobbies, Interests
-from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm
+from app.models import User, Hobbies, Interests, Meeting
+from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, MeetingForm
 from flask_login import current_user, login_user, logout_user, login_required, fresh_login_required
 import sqlalchemy as sa
 from app import db
@@ -94,6 +94,23 @@ def register():
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/book_meeting', methods=['GET', 'POST'])
+@login_required
+def book_meeting():
+    form=MeetingForm()
+    if form.validate_on_submit():
+        meeting = Meeting(
+            name=current_user.first_name,
+            email=current_user.email,
+            date=str(form.date.data),
+            time=str(form.time.data)
+        )
+        db.session.add(meeting)
+        db.session.commit()
+        flash('Meeting booked!', 'success')
+        return redirect(url_for('home'))
+    return render_template('book_meeting.html', title='Meeting', form=form)
 
 # Error handlers
 # See: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes

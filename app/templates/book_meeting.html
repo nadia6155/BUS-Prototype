@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Book a Meeting</h1>
+
+    <form method="post">
+    {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            {{ form.date.label(class="form-label")}}
+            {{ form.date(class="form-control") }}
+    {%  if form.date.errors %}
+            <div class="invalid-feedback">{{ form.date.errors[0] }}</div>
+            {%  endif %}
+        </div>
+
+    <div class="mb-3">
+        {{ form.time.label(class="form-label")}}
+        {{ form.time(class="form-control") }}
+        {%  if form.time.errors %}
+        <div class="invalid-feedback">{{ form.time.errors[0] }}</div>
+        {%  endif %}
+    </div>
+
+    {{ form.submit() }}
+
+    </form>
+{% endblock %}
