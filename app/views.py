@@ -132,23 +132,31 @@ def student_profile(studentID):
                 return redirect(url_for('student_profile', studentID=current_user.id))
 
     #Edit personal details
-    if edit_form.validate_on_submit() and edit_form.edit.data == current_user.id:
+    if edit_form.validate_on_submit():
         q = db.select(User).where(User.id == current_user.id)
         user = db.session.scalar(q)
-        if user:
-            user.first_name = edit_form.first_name.data
-            user.last_name = edit_form.last_name.data
-            user.email = edit_form.email.data
-            user.phone = edit_form.phone.data
-            db.session.commit()
-            flash('User details updated successfully!', 'success')
-            return redirect(url_for('student_profile', studentID=current_user.id))
-        else:
-            edit_form.first_name.data = user.first_name
-            edit_form.last_name.data = user.last_name
-            edit_form.email.data = user.email
-            edit_form.phone.data = user.phone
-            edit_form.edit.data = user.id
+        # update user with form data
+        user.first_name = edit_form.first_name.data
+        user.last_name = edit_form.last_name.data
+        user.email = edit_form.email.data
+        user.phone = edit_form.phone.data
+        db.session.commit()
+        flash('User details updated successfully in if!', 'success')
+        return redirect(url_for('student_profile', studentID=current_user.id))
+    else:
+        q = db.select(User).where(User.id == current_user.id)
+        user = db.session.scalar(q)
+        edit_form.first_name.data = user.first_name
+        edit_form.last_name.data = user.last_name
+        edit_form.email.data = user.email
+        edit_form.phone.data = user.phone
+        edit_form.edit.data = user.id
+        flash('User details updated successfully in else!', 'success')
+
+        return render_template('student_profile.html', title='Student Profile', form=form, student=student,
+                               choose_form=choose_form, edit_form=edit_form, student_id=str(studentID),
+                               hobbies_list=hobbies_list,
+                               interests_list=interests_list)
 
     return render_template('student_profile.html', title='Student Profile', form=form, student=student,
                            choose_form=choose_form, edit_form=edit_form, student_id=str(studentID), hobbies_list=hobbies_list,
