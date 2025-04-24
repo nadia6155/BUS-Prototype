@@ -14,7 +14,6 @@ class ChooseForm(FlaskForm):
     choice = HiddenField('Choice')
     hobby_or_interest = HiddenField('either')
 
-
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
@@ -57,9 +56,9 @@ class RegisterForm(FlaskForm):
             raise ValidationError("Email address already taken, please choose another")
 
 class EditPersonalDetailsForm(FlaskForm):
-    first_name = StringField('First Name')
-    last_name = StringField('Last Name')
-    email = StringField('Email')
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(), Email()])
     phone = StringField('Phone Number')
     # password
     # age = IntegerField('Age')
