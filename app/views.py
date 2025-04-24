@@ -150,14 +150,14 @@ def edit_profile():
     edit_form.email.data = user.email
     edit_form.phone.data = user.phone
 
-    if edit_form.validate_on_submit():
-        user.first_name = edit_form.first_name.data
-        user.last_name = edit_form.last_name.data
-        user.email = edit_form.email.data
-        user.phone = edit_form.phone.data
-        db.session.commit()
-        flash('User details updated successfully', 'success')
-        return redirect(url_for('student_profile', studentID=current_user.id))
+    # if edit_form.validate_on_submit():
+    #     user.first_name = edit_form.first_name.data
+    #     user.last_name = edit_form.last_name.data
+    #     user.email = edit_form.email.data
+    #     user.phone = edit_form.phone.data
+    #     db.session.commit()
+    #     flash('User details updated successfully', 'success')
+    #     return redirect(url_for('student_profile', studentID=current_user.id))
 
     return render_template('edit_personal_details.html', title='Edit Personal Details', edit_form=edit_form, choose_form=choose_form)
 
