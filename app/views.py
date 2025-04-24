@@ -131,32 +131,6 @@ def student_profile(studentID):
                 flash('Interest deleted successfully!', 'info')
                 return redirect(url_for('student_profile', studentID=current_user.id))
 
-    # #Edit personal details
-    # if edit_form.validate_on_submit():
-    #     q = db.select(User).where(User.id == current_user.id)
-    #     user = db.session.scalar(q)
-    #     # update user with form data
-    #     user.first_name = edit_form.first_name.data
-    #     user.last_name = edit_form.last_name.data
-    #     user.email = edit_form.email.data
-    #     user.phone = edit_form.phone.data
-    #     db.session.commit()
-    #     flash('User details updated successfully in if!', 'success')
-    #     return redirect(url_for('student_profile', studentID=current_user.id))
-    # else:
-    #     q = db.select(User).where(User.id == current_user.id)
-    #     user = db.session.scalar(q)
-    #     edit_form.first_name.data = user.first_name
-    #     edit_form.last_name.data = user.last_name
-    #     edit_form.email.data = user.email
-    #     edit_form.phone.data = user.phone
-    #     edit_form.edit.data = user.id
-    #     flash('User details updated successfully in else!', 'success')
-    #
-    #     return render_template('student_profile.html', title='Student Profile', form=form, student=student,
-    #                            choose_form=choose_form, edit_form=edit_form, student_id=str(studentID),
-    #                            hobbies_list=hobbies_list,
-    #                            interests_list=interests_list)
 
     return render_template('student_profile.html', title='Student Profile', form=form, student=student,
                            choose_form=choose_form, edit_form=edit_form, student_id=str(studentID), hobbies_list=hobbies_list,
@@ -165,8 +139,31 @@ def student_profile(studentID):
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    #have form object, if edit_form.validates on submit (using the id, populate & add(-1)/edit code),
-    #render edit_profile HTML
+    choose_form = ChooseForm()
+    edit_form = EditPersonalDetailsForm()
+
+    # Populate data to form ()
+    q = db.select(User).where(User.id == current_user.id)
+    user = db.session.scalar(q)
+    edit_form.first_name.data = user.first_name
+    edit_form.last_name.data = user.last_name
+    edit_form.email.data = user.email
+    edit_form.phone.data = user.phone
+
+    if edit_form.validate_on_submit():
+        user.first_name = edit_form.first_name.data
+        user.last_name = edit_form.last_name.data
+        user.email = edit_form.email.data
+        user.phone = edit_form.phone.data
+        db.session.commit()
+        flash('User details updated successfully', 'success')
+        return redirect(url_for('student_profile', studentID=current_user.id))
+
+    return render_template('edit_personal_details.html', title='Edit Personal Details', edit_form=edit_form, choose_form=choose_form)
+
+    #   have form object, if edit_form.validates on submit (using the id, populate & add(-1)/edit code),
+    #   render edit_profile HTML
+
 
 
     # #Edit personal details
@@ -197,8 +194,6 @@ def edit_profile():
     #                            interests_list=interests_list)
 
 
-
-    pass
 
 @app.route('/logout')
 def logout():
