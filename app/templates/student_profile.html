@@ -2,13 +2,15 @@
 {% import "bootstrap_wtf.html" as wtf %}
 
 {% block content %}
-<h1>Student Profile Page</h1>
+<div class="mb-5"><h4>Hello {{ current_user.first_name }}!</h4></div>
 
-<h3>Hello {{ current_user.first_name }}!</h3>
+<div class="mb-3"><h2>Student Profile Page</h2></div>
 
-<table class="table">
+
+<h4>Your Personal Details</h4>
+<table class="text-center table table-striped table-bordered border-primary mb-5">
     <thead>
-        <tr>
+        <tr class="table-primary border-primary">
             <th>ID</th>
             <th>Firstname</th>
             <th>Lastname</th>
@@ -47,13 +49,13 @@
     {% endfor %}
 </table>
 
-
 <h4>Your Hobbies & Interests</h4>
-<div class="row">
+<div class="row mb-5">
     <div class="col-lg-3">
-    <table class="table">
+    <table class="text-center table table-striped table-bordered border-primary">
+
         <thead>
-        <tr>
+        <tr class="table-primary border-primary">
             <th>ID</th>
             <th>Hobbies</th>
             <th></th>
@@ -82,9 +84,9 @@
 
 
     <div class="col-lg-3">
-    <table class="table">
+    <table class="text-center table table-striped table-bordered border-primary ms-5">
         <thead>
-        <tr>
+        <tr class="table-primary border-primary">
             <th>ID</th>
             <th>Interests</th>
             <th></th>

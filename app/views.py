@@ -81,7 +81,7 @@ def student_profile(studentID):
                 hobby_exists = True
 
         if new_hobby_added:
-            flash('Hobbies added successfully!', 'success')
+            flash('Hobbies added successfully!', 'info')
         if hobby_exists:
             flash('Hobbies already exists!', 'danger')
 
@@ -101,7 +101,7 @@ def student_profile(studentID):
                 interest_exists = True
 
         if new_interest_added:
-            flash('Interests added successfully!', 'success')
+            flash('Interests added successfully!', 'info')
         if interest_exists:
             flash('Interests already exists!', 'danger')
 
@@ -169,7 +169,7 @@ def update_profile():
         user.phone = edit_form.phone.data
 
         db.session.commit()
-        flash('User First name edited successfully!', 'success')
+        flash('Your details have been updated successfully!', 'info')
 
     return redirect(url_for('student_profile', studentID=current_user.id))
 
