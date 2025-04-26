@@ -20,6 +20,9 @@ class User(UserMixin, db.Model):
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
     role: so.Mapped[str] = so.mapped_column(sa.String(10), default="Normal")
     phone: so.Mapped[Optional[str]] = so.mapped_column(sa.String(120), unique=True)
+    age: so.Mapped[Optional[int]] = so.mapped_column()
+    emergency_name: so.Mapped[Optional[str]] = so.mapped_column(sa.String(64))
+    emergency_phone: so.Mapped[Optional[str]] = so.mapped_column(sa.String(120), unique=True)
 
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')

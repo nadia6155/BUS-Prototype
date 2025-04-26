@@ -150,6 +150,9 @@ def edit_profile():
         edit_form.last_name.data = user.last_name
         edit_form.email.data = user.email
         edit_form.phone.data = user.phone
+        edit_form.age.data = user.age
+        edit_form.emergency_name.data = user.emergency_name
+        edit_form.emergency_phone.data = user.emergency_phone
 
     return render_template('edit_personal_details.html', title='Edit Personal Details', edit_form=edit_form)
 
@@ -167,6 +170,9 @@ def update_profile():
         user.last_name = edit_form.last_name.data
         user.email = edit_form.email.data
         user.phone = edit_form.phone.data
+        user.age = edit_form.age.data
+        user.emergency_name = edit_form.emergency_name.data
+        user.emergency_phone = edit_form.emergency_phone.data
 
         db.session.commit()
         flash('Your details have been updated successfully!', 'info')
