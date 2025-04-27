@@ -13,6 +13,7 @@ import datetime
 
 class ChooseForm(FlaskForm):
     choice = HiddenField('Choice')
+    hobby_or_interest = HiddenField('either')
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -54,6 +55,18 @@ class RegisterForm(FlaskForm):
         q = db.select(User).where(User.email==field.data)
         if db.session.scalar(q):
             raise ValidationError("Email address already taken, please choose another")
+
+class EditPersonalDetailsForm(FlaskForm):
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
+    email = StringField('Email',validators=[DataRequired(), Email()])
+    phone = StringField('Phone Number')
+    age = IntegerField('Age')
+    emergency_name = StringField('Emergency Name')
+    emergency_phone = StringField('Emergency Contact Number')
+    submit = SubmitField('Submit')
+    edit = HiddenField('Edit', default='-1')  # default = -1 means to CREATE/ADD
+
 
 class AddHobbiesAndInterestsForm(FlaskForm):
     hobbies = SelectMultipleField('Select your hobbies', choices=[

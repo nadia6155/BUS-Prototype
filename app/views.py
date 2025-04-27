@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, send_file, send_from_directory
 from app import app
 from app.models import User, Hobbies, Interests, Meeting
-from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, MeetingForm
+from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm, MeetingForm
 from flask_login import current_user, login_user, logout_user, login_required, fresh_login_required
 import sqlalchemy as sa
 from app import db
@@ -14,13 +14,6 @@ import datetime
 @app.route("/")
 def home():
     return render_template('home.html', title="Home")
-
-
-# @app.route("/account")
-# @login_required
-# def account():
-#     return render_template('account.html', title="Account")
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -45,6 +38,8 @@ def login():
 def student_profile(studentID):
     form = AddHobbiesAndInterestsForm()
     choose_form = ChooseForm()
+    edit_form = EditPersonalDetailsForm()
+
     q = db.select(User).where(User.id == studentID)
     student = db.session.scalars(q)
 
@@ -53,29 +48,137 @@ def student_profile(studentID):
 
     hobbies_list = []
     for hobby in student_hobby:
-        hobbies_list.append(hobby.hobbies)
+        each_hobby = []
+        each_hobby.append(hobby.id)
+        each_hobby.append(hobby.hobbies)
+        hobbies_list.append(each_hobby)
 
     q_interest = db.select(Interests).where(Interests.user_id == studentID)
     student_interest = db.session.scalars(q_interest)
 
     interests_list = []
     for interest in student_interest:
-        interests_list.append(interest.interests)
+        each_interest = []
+        each_interest.append(interest.id)
+        each_interest.append(interest.interests)
+        interests_list.append(each_interest)
 
+    #Adding Hobbies/Interests
     if form.validate_on_submit():
+        new_hobby_added = False
+        hobby_exists = False
+
+        existing_hobbies = []
+        for hobby in current_user.hobbies:
+            existing_hobbies.append(hobby.hobbies)
+
         for each_hobby in form.hobbies.data:
-            hobby = Hobbies(hobbies=each_hobby.strip(), user_id=current_user.id)
-            db.session.add(hobby)
+            if each_hobby not in existing_hobbies:
+                hobby = Hobbies(hobbies=each_hobby.strip(), user_id=current_user.id)
+                db.session.add(hobby)
+                new_hobby_added = True
+            else:
+                hobby_exists = True
+
+        if new_hobby_added:
+            flash('Hobbies added successfully!', 'info')
+        if hobby_exists:
+            flash('Hobbies already exists!', 'danger')
+
+        new_interest_added = False
+        interest_exists = False
+
+        existing_interests = []
+        for interest in current_user.interests:
+            existing_interests.append(interest.interests)
 
         for each_interest in form.interests.data:
-            interest = Interests(interests=each_interest.strip(), user_id=current_user.id)
-            db.session.add(interest)
+            if each_interest not in existing_interests:
+                interest = Interests(interests=each_interest.strip(), user_id=current_user.id)
+                db.session.add(interest)
+                new_interest_added = True
+            else:
+                interest_exists = True
+
+        if new_interest_added:
+            flash('Interests added successfully!', 'info')
+        if interest_exists:
+            flash('Interests already exists!', 'danger')
 
         db.session.commit()
-
-
         return redirect(url_for('student_profile', studentID=current_user.id))
-    return render_template('student_profile.html', title='Student Profile', form=form, student=student, choose_form=choose_form, student_id=str(studentID), hobbies_list=hobbies_list, interests_list=interests_list)
+
+    #Deleting hobbies and Interests
+    if choose_form.validate_on_submit():
+
+        if choose_form.hobby_or_interest.data == 'hobby':
+            q = db.select(Hobbies).where(Hobbies.id == int(choose_form.choice.data))
+            hobby = db.session.scalar(q)
+
+            if hobby:
+                db.session.delete(hobby)
+                db.session.commit()
+                flash('Hobby deleted successfully!', 'info')
+                return redirect(url_for('student_profile', studentID=current_user.id))
+
+        elif choose_form.hobby_or_interest.data == 'interest':
+            q = db.select(Interests).where(Interests.id == int(choose_form.choice.data))
+            interest = db.session.scalar(q)
+
+            if interest:
+                db.session.delete(interest)
+                db.session.commit()
+                flash('Interest deleted successfully!', 'info')
+                return redirect(url_for('student_profile', studentID=current_user.id))
+
+
+    return render_template('student_profile.html', title='Student Profile', form=form, student=student,
+                           choose_form=choose_form, edit_form=edit_form, student_id=str(studentID), hobbies_list=hobbies_list,
+                           interests_list=interests_list)
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    edit_form = EditPersonalDetailsForm()
+
+    q = db.select(User).where(User.id == current_user.id)
+    user = db.session.scalar(q)
+
+    if edit_form.edit.data != '-1':
+        # Populate db data to form
+        edit_form.first_name.data = user.first_name
+        edit_form.last_name.data = user.last_name
+        edit_form.email.data = user.email
+        edit_form.phone.data = user.phone
+        edit_form.age.data = user.age
+        edit_form.emergency_name.data = user.emergency_name
+        edit_form.emergency_phone.data = user.emergency_phone
+
+    return render_template('edit_personal_details.html', title='Edit Personal Details', edit_form=edit_form)
+
+
+@app.route('/update_profile', methods=['GET', 'POST'])
+@login_required
+def update_profile():
+    edit_form = EditPersonalDetailsForm()
+    if edit_form.validate_on_submit():
+        q = db.select(User).where(User.id == current_user.id)
+        user = db.session.scalar(q)
+
+        # From form to db
+        user.first_name = edit_form.first_name.data
+        user.last_name = edit_form.last_name.data
+        user.email = edit_form.email.data
+        user.phone = edit_form.phone.data
+        user.age = edit_form.age.data
+        user.emergency_name = edit_form.emergency_name.data
+        user.emergency_phone = edit_form.emergency_phone.data
+
+        db.session.commit()
+        flash('Your details have been updated successfully!', 'info')
+
+    return redirect(url_for('student_profile', studentID=current_user.id))
+
 
 @app.route('/logout')
 def logout():
