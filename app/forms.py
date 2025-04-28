@@ -2,6 +2,7 @@ from flask_login import current_user
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, HiddenField, StringField, PasswordField, BooleanField, SelectField
 from wtforms.fields.choices import SelectMultipleField
+from wtforms.fields.datetime import DateField, TimeField
 from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import TextAreaField
 from wtforms.validators import DataRequired, EqualTo, NumberRange, ValidationError, Email, Optional, Length
@@ -60,11 +61,10 @@ class EditPersonalDetailsForm(FlaskForm):
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email',validators=[DataRequired(), Email()])
     phone = StringField('Phone Number')
-    # password
-    # age = IntegerField('Age')
-    # emergency_name = StringField('Emergency Name')
-    # emergency_phone = StringField('Alternate Phone Number')
-    submit = SubmitField('Update')
+    age = IntegerField('Age')
+    emergency_name = StringField('Emergency Name')
+    emergency_phone = StringField('Emergency Contact Number')
+    submit = SubmitField('Submit')
     edit = HiddenField('Edit', default='-1')  # default = -1 means to CREATE/ADD
 
 
@@ -83,3 +83,9 @@ class AddHobbiesAndInterestsForm(FlaskForm):
                                                           ('Reading', 'Reading'),
                                                           ('Photography', 'Photography')], validators=[DataRequired()])
     submit = SubmitField('Add Hobbies and Interests')
+
+# meeting booking form
+class MeetingForm(FlaskForm):
+    date = DateField('Date', validators=[DataRequired()], format='%d-%m-%Y')
+    time = TimeField('Time', validators=[DataRequired()], format='%H:%M')
+    submit = SubmitField('Book Meeting')

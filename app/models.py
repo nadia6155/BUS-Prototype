@@ -20,6 +20,9 @@ class User(UserMixin, db.Model):
     password_hash: so.Mapped[Optional[str]] = so.mapped_column(sa.String(256))
     role: so.Mapped[str] = so.mapped_column(sa.String(10), default="Normal")
     phone: so.Mapped[Optional[str]] = so.mapped_column(sa.String(120), unique=True)
+    age: so.Mapped[Optional[int]] = so.mapped_column()
+    emergency_name: so.Mapped[Optional[str]] = so.mapped_column(sa.String(64))
+    emergency_phone: so.Mapped[Optional[str]] = so.mapped_column(sa.String(120), unique=True)
 
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
@@ -54,3 +57,12 @@ class Interests(db.Model):
     interests: so.Mapped[str] = so.mapped_column(sa.String(120))
     user_id: so.Mapped[int] = mapped_column(ForeignKey('users.id'), index=True)
     user: so.Mapped['User'] = relationship(back_populates='interests')
+
+
+# meetings booked table
+class Meeting(db.Model):
+    meeting_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    date = db.Column(db.String(20))
+    time = db.Column(db.String(20))

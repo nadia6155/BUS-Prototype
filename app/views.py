@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, send_file, send_from_directory
 from app import app
-from app.models import User, Hobbies, Interests
-from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm
+from app.models import User, Hobbies, Interests, Meeting
+from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm, MeetingForm
 from flask_login import current_user, login_user, logout_user, login_required, fresh_login_required
 import sqlalchemy as sa
 from app import db
@@ -150,6 +150,9 @@ def edit_profile():
         edit_form.last_name.data = user.last_name
         edit_form.email.data = user.email
         edit_form.phone.data = user.phone
+        edit_form.age.data = user.age
+        edit_form.emergency_name.data = user.emergency_name
+        edit_form.emergency_phone.data = user.emergency_phone
 
     return render_template('edit_personal_details.html', title='Edit Personal Details', edit_form=edit_form)
 
@@ -167,6 +170,9 @@ def update_profile():
         user.last_name = edit_form.last_name.data
         user.email = edit_form.email.data
         user.phone = edit_form.phone.data
+        user.age = edit_form.age.data
+        user.emergency_name = edit_form.emergency_name.data
+        user.emergency_phone = edit_form.emergency_phone.data
 
         db.session.commit()
         flash('Your details have been updated successfully!', 'info')
@@ -191,6 +197,23 @@ def register():
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/book_meeting', methods=['GET', 'POST'])
+@login_required
+def book_meeting():
+    form=MeetingForm()
+    if form.validate_on_submit():
+        meeting = Meeting(
+            name=current_user.first_name,
+            email=current_user.email,
+            date=str(form.date.data),
+            time=str(form.time.data)
+        )
+        db.session.add(meeting)
+        db.session.commit()
+        flash('Meeting booked!', 'success')
+        return redirect(url_for('home'))
+    return render_template('book_meeting.html', title='Meeting', form=form)
 
 # Error handlers
 # See: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes

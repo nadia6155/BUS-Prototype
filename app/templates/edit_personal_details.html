@@ -11,6 +11,9 @@
         {{ wtf.form_field(edit_form.last_name, False) }}
         {{ wtf.form_field(edit_form.email, False) }}
         {{ wtf.form_field(edit_form.phone, False) }}
+        {{ wtf.form_field(edit_form.age, False) }}
+        {{ wtf.form_field(edit_form.emergency_name, False) }}
+        {{ wtf.form_field(edit_form.emergency_phone, False) }}
         {{ wtf.form_field(edit_form.submit, False) }}
         {% if edit_form.edit.data != '-1' %}
         <div>
