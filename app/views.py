@@ -21,11 +21,19 @@ def login():
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = db.session.scalar(
-            sa.select(User).where(User.email == form.email.data))
+        user = db.session.scalar(sa.select(User).where(User.email == form.email.data))
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password', 'danger')
             return redirect(url_for('login'))
+
+        #rewards
+        today = datetime.date.today()
+        if user.last_login_date != today:
+            user.points = user.points + 10
+            user.last_login_date = today
+            db.session.commit()
+            flash('Hooray!!! You have earned 10 points for logging in today!', 'success')
+
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
@@ -82,8 +90,15 @@ def student_profile(studentID):
 
         if new_hobby_added:
             flash('Hobbies added successfully!', 'info')
+
+            #rewards
+            current_user.points = current_user.points + 5
+            db.session.commit()
+            flash('Hooray!!! You have earned 5 points for adding hobbies!', 'success')
+
         if hobby_exists:
             flash('Hobbies already exists!', 'danger')
+
 
         new_interest_added = False
         interest_exists = False
@@ -102,11 +117,19 @@ def student_profile(studentID):
 
         if new_interest_added:
             flash('Interests added successfully!', 'info')
+
+            # rewards
+            current_user.points = current_user.points + 5
+            db.session.commit()
+            flash('Hooray!!! You have earned 5 points for adding interests!', 'success')
+
         if interest_exists:
             flash('Interests already exists!', 'danger')
 
         db.session.commit()
         return redirect(url_for('student_profile', studentID=current_user.id))
+
+
 
     #Deleting hobbies and Interests
     if choose_form.validate_on_submit():
@@ -212,7 +235,14 @@ def book_meeting():
         db.session.add(meeting)
         db.session.commit()
         flash('Meeting booked!', 'success')
+
+        # # rewards
+        # current_user.points = current_user.points + 5
+        # db.session.commit()
+
         return redirect(url_for('home'))
+
+
     return render_template('book_meeting.html', title='Meeting', form=form)
 
 # Error handlers
