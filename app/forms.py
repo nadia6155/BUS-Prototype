@@ -60,10 +60,10 @@ class EditPersonalDetailsForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email',validators=[DataRequired(), Email()])
-    phone = StringField('Phone Number')
-    age = IntegerField('Age')
-    emergency_name = StringField('Emergency Name')
-    emergency_phone = StringField('Emergency Contact Number')
+    phone = StringField('Phone Number', validators=[Optional()])
+    age = IntegerField('Age', validators=[Optional()])
+    emergency_name = StringField('Emergency Name', validators=[Optional()])
+    emergency_phone = StringField('Emergency Contact Number', validators=[Optional()])
     submit = SubmitField('Submit')
     edit = HiddenField('Edit', default='-1')  # default = -1 means to CREATE/ADD
 
