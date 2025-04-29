@@ -96,7 +96,6 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/book_meeting', methods=['GET', 'POST'])
-@login_required
 def book_meeting():
     form=MeetingForm()
     if form.validate_on_submit():
