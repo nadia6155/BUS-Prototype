@@ -24,6 +24,11 @@ class User(UserMixin, db.Model):
     emergency_name: so.Mapped[Optional[str]] = so.mapped_column(sa.String(64))
     emergency_phone: so.Mapped[Optional[str]] = so.mapped_column(sa.String(120), unique=True)
 
+
+    #Rewards
+    points: so.Mapped[int] = so.mapped_column(default=0)
+    last_login_date: so.Mapped[datetime.datetime] = so.mapped_column(default=None, nullable=True)
+
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
 
