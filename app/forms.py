@@ -1,10 +1,11 @@
 from flask_login import current_user
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, HiddenField, StringField, PasswordField, BooleanField, SelectField
+from wtforms import SubmitField, TextAreaField, HiddenField, StringField, PasswordField, BooleanField, SelectField
 from wtforms.fields.choices import SelectMultipleField
 from wtforms.fields.datetime import DateField, TimeField
 from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import TextAreaField
+from wtforms.fields import DateTimeLocalField
 from wtforms.validators import DataRequired, EqualTo, NumberRange, ValidationError, Email, Optional, Length
 from app import db
 from app.models import User
@@ -89,3 +90,12 @@ class MeetingForm(FlaskForm):
     date = DateField('Date', validators=[DataRequired()], format='%d-%m-%Y')
     time = TimeField('Time', validators=[DataRequired()], format='%H:%M')
     submit = SubmitField('Book Meeting')
+
+# event calender form
+class EventForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired()])
+    start_time = DateTimeLocalField('Start Time', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
+    end_time = DateTimeLocalField('End Time', format='%Y-%m-%dT%H:%M', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
+    submit = SubmitField('Add Event')

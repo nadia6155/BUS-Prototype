@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
 from dataclasses import dataclass
 import datetime
+from datetime import datetime
 
 @dataclass
 class User(UserMixin, db.Model):
@@ -66,3 +67,13 @@ class Meeting(db.Model):
     email = db.Column(db.String(100))
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
+
+# event calender table
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    start_time = db.Column(db.DateTime, nullable=False)
+    end_time = db.Column(db.DateTime, nullable=False)
+    location = db.Column(db.String(100), nullable=True)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)

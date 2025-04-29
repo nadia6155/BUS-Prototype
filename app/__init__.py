@@ -20,3 +20,14 @@ from app.debug_utils import reset_db
 @app.shell_context_processor
 def make_shell_context():
     return dict(db=db, sa=sa, so=so, reset_db=reset_db)
+
+
+#app = Flask(__name__)
+#app.config['SECRET_KEY'] = 'your_secret_key'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#db.init_app(app)
+
+with app.app_context():
+    from app import views
+    db.create_all()
