@@ -1,37 +1,48 @@
 {% extends "base.html" %}
-
 {% block title %}Add New Event{% endblock %}
 
 {% block content %}
-  <h1 class="mb-4">Add New Event</h1>
-  <form method="POST" action="{{ url_for('add_event') }}">
-    {{ form.hidden_tag() }}
+<h1 class="mb-4">Add New Event</h1>
+<form method="POST" action="{{ url_for('add_event') }}">
+  {{ form.hidden_tag() }}
 
-    <div class="form-group mb-3">
-      <label for="title">Event Title</label>
-      {{ form.title(class="form-control") }}
-    </div>
+  <div class="mb-3">
+    {{ form.title.label }} {{ form.title(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.description.label }} {{ form.description(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.start_time.label }} {{ form.start_time(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.end_time.label }} {{ form.end_time(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.mode.label }} {{ form.mode(class="form-select", onchange="toggleLinkField(this)") }}
+  </div>
+  <div class="mb-3" id="linkField" style="display: none;">
+    {{ form.link.label }} {{ form.link(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.location.label }} {{ form.location(class="form-control") }}
+  </div>
+  <div class="mb-3">
+    {{ form.category.label }} {{ form.category(class="form-select") }}
+  </div>
 
-    <div class="form-group mb-3">
-      <label for="description">Event Description</label>
-      {{ form.description(class="form-control") }}
-    </div>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
 
-    <div class="form-group mb-3">
-      <label for="start_time">Start Time</label>
-      {{ form.start_time(class="form-control", type="datetime-local") }}
-    </div>
-
-    <div class="form-group mb-3">
-      <label for="end_time">End Time</label>
-      {{ form.end_time(class="form-control", type="datetime-local") }}
-    </div>
-
-    <div class="form-group mb-4">
-      <label for="location">Location</label>
-      {{ form.location(class="form-control") }}
-    </div>
-
-    {{ form.submit(class="btn btn-primary") }}
-  </form>
+<script>
+  function toggleLinkField(select) {
+    const mode = select.value;
+    const linkField = document.getElementById('linkField');
+    linkField.style.display = (mode === 'Online') ? 'block' : 'none';
+  }
+  window.onload = function () {
+    const selected = document.querySelector('[name="mode"]').value;
+    toggleLinkField({ value: selected });
+  };
+</script>
 {% endblock %}

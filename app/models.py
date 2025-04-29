@@ -76,4 +76,7 @@ class Event(db.Model):
     start_time = db.Column(db.DateTime, nullable=False)
     end_time = db.Column(db.DateTime, nullable=False)
     location = db.Column(db.String(100), nullable=True)
+    mode = db.Column(db.String(10), nullable=False)  # 'Online' or 'In-person'
+    link = db.Column(db.String(255), nullable=True)  # For online events
+    category = db.Column(db.String(50), nullable=False)  # 'University', 'Society', 'Uni Support'
     created_at = db.Column(db.DateTime, default=datetime.utcnow)

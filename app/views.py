@@ -219,6 +219,7 @@ def book_meeting():
     return render_template('book_meeting.html', title='Meeting', form=form)
 
 # event calender feature
+
 # Show events list
 @app.route("/events")
 def events():
@@ -235,18 +236,17 @@ def add_event():
             description=form.description.data,
             start_time=form.start_time.data,
             end_time=form.end_time.data,
-            location=form.location.data
+            location=form.location.data,
+            mode=form.mode.data,
+            link=form.link.data if form.mode.data == "Online" else None,
+            category=form.category.data
         )
         db.session.add(event)
         db.session.commit()
         flash('Event added successfully!', 'success')
         return redirect(url_for('events'))
 
-    if request.method == 'POST':
-        flash('Failed to add event. Please enter valid data.', 'danger')
-        print("Form Errors:", form.errors)
-
-    return render_template('add_event.html', form=form)
+    return render_template('add_event.html', form=form, title="Add New Event")
 
 # Delete an event
 @app.route("/delete_event/<int:event_id>", methods=["POST"])
