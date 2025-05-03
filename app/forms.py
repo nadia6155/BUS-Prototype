@@ -1,10 +1,10 @@
 from flask_login import current_user
 from flask_wtf import FlaskForm
-from wtforms import SubmitField, HiddenField, StringField, PasswordField, BooleanField, SelectField
-from wtforms.fields.choices import SelectMultipleField
-from wtforms.fields.datetime import DateField, TimeField
-from wtforms.fields.numeric import IntegerField
-from wtforms.fields.simple import TextAreaField
+from wtforms import SubmitField, HiddenField, StringField, PasswordField, BooleanField, SelectField, SelectMultipleField,DateField,TimeField,IntegerField,TextAreaField
+# from wtforms.fields.choices import SelectMultipleField
+# from wtforms.fields.datetime import DateField, TimeField
+# from wtforms.fields.numeric import IntegerField
+# from wtforms.fields.simple import TextAreaField
 from wtforms.validators import DataRequired, EqualTo, NumberRange, ValidationError, Email, Optional, Length
 from app import db
 from app.models import User
@@ -85,7 +85,7 @@ class AddHobbiesAndInterestsForm(FlaskForm):
     submit = SubmitField('Add Hobbies and Interests')
 
 # meeting booking form
-class MeetingForm(FlaskForm):
-    date = DateField('Date', validators=[DataRequired()], format='%d-%m-%Y')
-    time = TimeField('Time', validators=[DataRequired()], format='%H:%M')
-    submit = SubmitField('Book Meeting')
+class ScheduleMeetingForm(FlaskForm):
+    date = SelectField('Choose Date', choices=[], validators=[DataRequired()])
+    time_slot = SelectField('Choose Time',choices=[('09:00 AM', '09:00 AM'),('10:00 AM', '10:00 AM'),('11:00 AM', '11:00 AM'),('12:00 PM', '12:00 PM'),('02:00 PM', '02:00 PM'),('03:00 PM', '03:00 PM')],validators=[DataRequired()])
+    submit = SubmitField('Confirm Meeting')

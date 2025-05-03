@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<div class="container mt-3">
+{% if z %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-dark">
+            <th>Day</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Cancel Meeting</th>
+        </tr>
+    </thead>
+    {% for i in z %}
+        <tr class="table-info">
+            <td>{{ i.date.strftime('%A') }}</td>
+            <td>{{ i.date.strftime('%d-%m-%Y') }}</td>
+            <td>{{ i.time_slot }}</td>
+            <td>
+                    <form action="{{ url_for('cancel_meeting') }}" method="post">
+                        {{ form.csrf_token() }}
+                        {{ form.choice(value=i.id) }}
+                        <button class="btn" type="submit">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
+                </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</div>
+
+
+{% endblock %}
