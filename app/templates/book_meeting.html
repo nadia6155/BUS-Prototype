@@ -22,6 +22,14 @@
         {%  endif %}
     </div>
 
+    <div class="mb-3">
+        {{ form.staff.label(class="form-label") }}
+        {{ form.staff(class="form-control") }}
+        {% if form.staff.errors %}
+        <div class="invalid-feedback">{{ form.staff_id.errors[0] }}</div>
+        {% endif %}
+    </div>
+
     {{ form.submit() }}
 
     </form>

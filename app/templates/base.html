@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{ url_for('notifications') }}">Notifications</a>
+                </li>
                 {% if not current_user.is_anonymous and current_user.role=='Student' %}
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ url_for('student_profile', studentID=current_user.id) }}">Student Profile</a>

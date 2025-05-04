@@ -24,6 +24,8 @@ class User(UserMixin, db.Model):
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
 
+    # needs 1 to * rel to notification table
+    notification = db.relationship('Notification', backref='user')
 
     def __repr__(self):
         pwh= 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
@@ -56,10 +58,19 @@ class Interests(db.Model):
     user: so.Mapped['User'] = relationship(back_populates='interests')
 
 
-# meetings booked table
+# meetings booked database
 class Meeting(db.Model):
     meeting_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
+    staff_name = db.Column(db.String(64), db.ForeignKey('users.first_name'))
+
+# notification database
+class Notification(db.Model):
+    __tablename__ = 'notification'
+    notification_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
+    #user_name = db.Column(db.String(64), db.ForeignKey('users.first_name'))
+    message = db.Column(db.String(100), nullable=False)
