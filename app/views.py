@@ -250,13 +250,13 @@ def book_meeting():
 
 # event calender feature
 
-# Show events list
+# Show events all the upcoming events list
 @app.route("/events")
 def events():
     events_list = Event.query.order_by(Event.start_time).all()
     return render_template('events.html', events=events_list, now=datetime.datetime.now(), title="Event Calendar")
 
-# Add new event
+# Add a new event only by staff member
 @app.route("/add_event", methods=["GET", "POST"])
 def add_event():
     form = EventForm()

@@ -37,14 +37,17 @@
                     <a class="nav-link" aria-current="page" href="{{ url_for('book_meeting') }}">Meeting Booking</a>
                 </li>
                 {% endif %}
-                {# --- New link added below for Event Calendar and Add Event --- #}
+                {# For Event Calendar and Add Event  #}
+                {% if not current_user.is_anonymous and current_user.role=='Student' %}
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ url_for('events') }}">Event Calendar</a>  {# Corrected to use your events function #}
-                </li>
+                </li> {% endif %}
+                {% if not current_user.is_anonymous and current_user.role=='Staff' %}
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{ url_for('add_event') }}">Add Event</a>  {# Added Add Event page link #}
-                </li>
-                {# --- End of new links --- #}
+                </li> {% endif %}
+
+                {#  End of event calender part #}
             </ul>
 
             <ul class="navbar-nav mb-2 mb-lg-0">

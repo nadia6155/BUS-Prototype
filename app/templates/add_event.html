@@ -19,10 +19,11 @@
     {{ form.end_time.label }} {{ form.end_time(class="form-control") }}
   </div>
   <div class="mb-3">
-    {{ form.mode.label }} {{ form.mode(class="form-select", onchange="toggleLinkField(this)") }}
+    {{ form.mode.label }} {{ form.mode(class="form-select") }}
   </div>
-  <div class="mb-3" id="linkField" style="display: none;">
-    {{ form.link.label }} {{ form.link(class="form-control") }}
+  <div class="mb-3">
+    <label for="link">Link to event (if online)</label>
+    {{ form.link(class="form-control") }}
   </div>
   <div class="mb-3">
     {{ form.location.label }} {{ form.location(class="form-control") }}
@@ -33,16 +34,4 @@
 
   {{ form.submit(class="btn btn-primary") }}
 </form>
-
-<script>
-  function toggleLinkField(select) {
-    const mode = select.value;
-    const linkField = document.getElementById('linkField');
-    linkField.style.display = (mode === 'Online') ? 'block' : 'none';
-  }
-  window.onload = function () {
-    const selected = document.querySelector('[name="mode"]').value;
-    toggleLinkField({ value: selected });
-  };
-</script>
 {% endblock %}

@@ -20,32 +20,8 @@
   </thead>
   <tbody>
     {% for event in events %}
-      {% set soon = (event.start_time - now).total_seconds() <= 86400 and (event.start_time - now).total_seconds() > 0 %}
-      <tr {% if soon %} class="table-warning" {% endif %}>
-        <td>
-          {{ event.title }}
-          {% if soon %}
-            <br>
-            <small id="countdown-{{ event.id }}" class="text-danger"></small>
-            <script>
-              const target{{ event.id }} = new Date("{{ event.start_time.strftime('%Y-%m-%dT%H:%M:%S') }}").getTime();
-              const countdown{{ event.id }} = setInterval(function() {
-                const now = new Date().getTime();
-                const distance = target{{ event.id }} - now;
-                if (distance < 0) {
-                  clearInterval(countdown{{ event.id }});
-                  document.getElementById("countdown-{{ event.id }}").innerHTML = "Started!";
-                } else {
-                  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                  document.getElementById("countdown-{{ event.id }}").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
-                }
-              }, 1000);
-            </script>
-          {% endif %}
-        </td>
-
+      <tr>
+        <td>{{ event.title }}</td>
         <td>{{ event.description }}</td>
         <td>{{ event.start_time.strftime('%Y-%m-%d %H:%M') }}</td>
         <td>{{ event.end_time.strftime('%Y-%m-%d %H:%M') }}</td>
