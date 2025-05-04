@@ -6,9 +6,9 @@ from flask_login import current_user, login_user, logout_user, login_required, f
 import sqlalchemy as sa
 from app import db
 from urllib.parse import urlsplit
-from app.models import Event
+from app.models import Event, Meeting, Notification
 from app.forms import EventForm
-from datetime import datetime,timedelta
+#from datetime import datetime,timedelta
 import datetime
 import csv
 import io
@@ -230,14 +230,19 @@ def register():
 def book_meeting():
     form = ScheduleMeetingForm()
 
-    today = datetime.today().date()
-    form.date.choices = [
-        (str(today + timedelta(days=i)),
-         (today + timedelta(days=i)).strftime('%A %d %B')) for i in range(5)
-    ]
+    # put only staff users in form select field
+    staff_users = User.query.filter_by(role='Staff').all()
+    form.staff.choices = [(user.first_name, f"{user.first_name}") for user in staff_users]
+
+   # today = datetime.today().date()
+    #form.date.choices = [
+      #  (str(today + timedelta(days=i)),
+       #  (today + timedelta(days=i)).strftime('%A %d %B')) for i in range(5)
+    #]
 
     if form.validate_on_submit():
-        date = datetime.strptime(form.date.data, '%Y-%m-%d').date()
+        #date = datetime.strptime(form.date.data, '%Y-%m-%d').date()
+        date = form.date.data
         slot = form.time_slot.data
 
         q=db.select(Meeting).where(Meeting.date==date,Meeting.time_slot==slot)
@@ -246,8 +251,24 @@ def book_meeting():
             flash('This time slot has already been booked!!! Please choose another slot!!', 'danger')
             return redirect(url_for('book_meeting'))
 
-        meeting = Meeting(user_id=current_user.id, date=date, time_slot=slot)
+        meeting = Meeting(
+            id=current_user.id,
+            name=current_user.first_name,
+            email=current_user.email,
+            date=str(form.date.data),
+            time_slot=str(form.time_slot.data),
+            staff_name=(form.staff.data)
+        )
         db.session.add(meeting)
+
+        # notification to the staff member
+        notification = Notification(
+            message=f"A meeting has been booked by {current_user.first_name}",
+            user_id=int(form.staff.data)
+        )
+        db.session.add(notification)
+
+
         db.session.commit()
         flash('Meeting booked successfully!', 'success')
         return redirect(url_for('home'))
@@ -279,6 +300,13 @@ def cancel_meeting():
         return render_template('upcoming_meetings.html', title="Upcoming Meetings", form=form, z=z)
     return render_template('upcoming_meetings.html', title="Upcoming Meetings", form=form)
 
+# notifications
+@app.route('/notifications', methods=['GET', 'POST'])
+@login_required
+def notifications():
+    query = db.select(Notification).where(Notification.user_id == current_user.id)
+    notification_list = db.session.scalars(query).all()
+    return render_template('notifications.html', notifications=notification_list, title="Notifications")
 
 
 # event calender feature

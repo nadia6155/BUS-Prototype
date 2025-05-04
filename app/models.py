@@ -3,7 +3,7 @@ import sqlalchemy as sa
 import sqlalchemy.orm as so
 from flask_login import UserMixin
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship, mapped_column
+from sqlalchemy.orm import relationship, mapped_column, Mapped
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
 from dataclasses import dataclass
@@ -34,6 +34,9 @@ class User(UserMixin, db.Model):
 
     #Meeting
     meetings: so.Mapped[list['Meeting']] = relationship(back_populates='user', cascade="all,delete-orphan")
+
+    # notification
+    notification: so.Mapped[list['Notification']] = relationship(back_populates='user', cascade="all,delete-orphan")
 
     def __repr__(self):
         pwh = 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
@@ -70,14 +73,27 @@ class Interests(db.Model):
 class Meeting(db.Model):
     __tablename__ = 'meetings'
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    date:so.Mapped[datetime.date] = so.mapped_column(sa.Date)
-    time_slot:so.Mapped[str] = so.mapped_column(sa.String(10))
+    name: Mapped[str] = mapped_column(sa.String(100))
+    email: Mapped[str] = mapped_column(sa.String(100))
+    date: so.Mapped[str] = mapped_column(sa.String(20))
+    time_slot: so.Mapped[str] = mapped_column(sa.String(20))
+    #date:so.Mapped[datetime.date] = so.mapped_column(sa.Date)
+    #time_slot:so.Mapped[str] = so.mapped_column(sa.String(10))
 
     user_id: so.Mapped[int] = so.mapped_column(ForeignKey('users.id'), index=True)
     user: so.Mapped['User'] = relationship(back_populates='meetings')
     # __table_args__ = (sa.UniqueConstraint('date', 'time_slot'),)
     def __repr__(self):
         return f'Meeting(id={self.id}, date={self.date}, time_slot={self.time_slot},user_id={self.user_id})'
+
+# notification table
+class Notification(db.Model):
+    __tablename__ = 'notification'
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    message: Mapped[str] = mapped_column(sa.String(100))
+
+    user_id: so.Mapped[int] = mapped_column(ForeignKey('users.id'), index=True)
+    user: so.Mapped['User'] = relationship(back_populates='notification')
 
 # event calender table
 class Event(db.Model):

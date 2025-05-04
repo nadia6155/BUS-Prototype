@@ -27,7 +27,7 @@
                     <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ url_for('book_meeting') }}">Meeting Booking</a>
+                    <a class="nav-link" aria-current="page" href="{{ url_for('notifications') }}">Notifications</a>
                 </li>
                 {% if not current_user.is_anonymous and current_user.role=='Student' %}
                 <li class="nav-item">
@@ -88,4 +88,9 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous">
+</script>
+
+</body>
+</html>

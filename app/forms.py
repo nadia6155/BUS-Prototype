@@ -8,7 +8,7 @@ from wtforms.fields.simple import TextAreaField
 from wtforms.fields import DateTimeLocalField
 from wtforms.validators import DataRequired, EqualTo, NumberRange, ValidationError, Email, Optional, Length
 from app import db
-from app.models import User
+from app.models import User, Meeting, Notification
 import datetime
 
 
@@ -87,11 +87,12 @@ class AddHobbiesAndInterestsForm(FlaskForm):
 
 # meeting booking form
 class ScheduleMeetingForm(FlaskForm):
-    date = SelectField('Choose Date', choices=[], validators=[DataRequired()])
+    date = DateField('Choose Date:', validators=[DataRequired()], format='%d-%m-%Y')
     time_slot = SelectField('Choose Time',choices=[('09:00 AM', '09:00 AM'),('10:00 AM', '10:00 AM'),('11:00 AM', '11:00 AM'),('12:00 PM', '12:00 PM'),('02:00 PM', '02:00 PM'),('03:00 PM', '03:00 PM')],validators=[DataRequired()])
+    staff = SelectField('Select a staff member to book meeting with:', coerce=str, validators=[DataRequired()])
     submit = SubmitField('Confirm Meeting')
 
-# event calender form
+# event calendar form
 class EventForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
