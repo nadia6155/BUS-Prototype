@@ -232,9 +232,10 @@ def book_meeting():
 
     # put only staff users in form select field
     staff_users = User.query.filter_by(role='Staff').all()
-    form.staff.choices = [(user.first_name, f"{user.first_name}") for user in staff_users]
+    #form.staff.choices = [(user.first_name, f"{user.first_name}") for user in staff_users]
+    form.staff.choices = [(user.id, user.first_name) for user in staff_users]
 
-   # today = datetime.today().date()
+    # today = datetime.today().date()
     #form.date.choices = [
       #  (str(today + timedelta(days=i)),
        #  (today + timedelta(days=i)).strftime('%A %d %B')) for i in range(5)
@@ -257,7 +258,7 @@ def book_meeting():
             email=current_user.email,
             date=form.date.data,
             time_slot=str(form.time_slot.data),
-            staff_name=(form.staff.data)
+            staff_id=(form.staff.data)
         )
         db.session.add(meeting)
 

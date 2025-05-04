@@ -33,7 +33,9 @@ class User(UserMixin, db.Model):
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
 
     #Meeting
-    meetings: so.Mapped[list['Meeting']] = relationship(back_populates='user', cascade="all,delete-orphan")
+    #staff_id: so.Mapped[list['Meeting']] = relationship(back_populates='staff_id', cascade="all,delete-orphan")
+    user_meeting: so.Mapped[list['Meeting']] = relationship(back_populates='user', foreign_keys='Meeting.user_id', cascade="all, delete-orphan")
+    staff_meeting: so.Mapped[list['Meeting']] = relationship(back_populates='staff', foreign_keys='Meeting.staff_id', cascade="all, delete-orphan")
 
     # notification
     notification: so.Mapped[list['Notification']] = relationship(back_populates='user', cascade="all,delete-orphan")
@@ -77,11 +79,16 @@ class Meeting(db.Model):
     email: so.Mapped[str] = so.mapped_column(sa.String(100))
     date: so.Mapped[datetime.date] = so.mapped_column(sa.Date)
     time_slot: so.Mapped[str] = so.mapped_column(sa.String(20))
+    #staff_name: so.Mapped[str] = so.mapped_column(sa.String(100))
     #date:so.Mapped[datetime.date] = so.mapped_column(sa.Date)
     #time_slot:so.Mapped[str] = so.mapped_column(sa.String(10))
 
     user_id: so.Mapped[int] = so.mapped_column(ForeignKey('users.id'), index=True)
-    user: so.Mapped['User'] = relationship(back_populates='meetings')
+    staff_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey('users.id'), index=True)
+
+    user: so.Mapped['User'] = relationship(back_populates='user_meeting', foreign_keys=[user_id])
+    staff: so.Mapped['User'] = relationship(back_populates='staff_meeting', foreign_keys=[staff_id])
+    #user: so.Mapped['User'] = relationship(back_populates='user_meeting')
     # __table_args__ = (sa.UniqueConstraint('date', 'time_slot'),)
     def __repr__(self):
         return f'Meeting(id={self.id}, date={self.date}, time_slot={self.time_slot},user_id={self.user_id})'
