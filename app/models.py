@@ -7,7 +7,8 @@ from sqlalchemy.orm import relationship, mapped_column
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
 from dataclasses import dataclass
-from datetime import datetime
+import datetime
+
 
 @dataclass
 class User(UserMixin, db.Model):
@@ -24,12 +25,15 @@ class User(UserMixin, db.Model):
     emergency_name: so.Mapped[Optional[str]] = so.mapped_column(sa.String(64))
     emergency_phone: so.Mapped[Optional[str]] = so.mapped_column(sa.String(120), unique=True)
 
+    # Rewards
+    points: so.Mapped[int] = so.mapped_column(default=0)
+    last_login_date: so.Mapped[datetime.datetime] = so.mapped_column(default=None, nullable=True)
+
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
 
-
     def __repr__(self):
-        pwh= 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
+        pwh = 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
         return f'User(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, role={self.role}, phone={self.phone}, pwh={pwh})'
 
     def set_password(self, password):
@@ -78,4 +82,4 @@ class Event(db.Model):
     mode = db.Column(db.String(10), nullable=False)  # 'Online' or 'In-person'
     link = db.Column(db.String(255), nullable=True)  # For online events
     category = db.Column(db.String(50), nullable=False)  # 'University', 'Society', 'Uni Support'
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)

@@ -8,7 +8,8 @@ from app import db
 from urllib.parse import urlsplit
 from app.models import Event
 from app.forms import EventForm
-from datetime import datetime
+# from datetime import datetime
+import datetime
 import csv
 import io
 
@@ -253,7 +254,7 @@ def book_meeting():
 @app.route("/events")
 def events():
     events_list = Event.query.order_by(Event.start_time).all()
-    return render_template('events.html', events=events_list, now=datetime.now(), title="Event Calendar")
+    return render_template('events.html', events=events_list, now=datetime.datetime.now(), title="Event Calendar")
 
 # Add new event
 @app.route("/add_event", methods=["GET", "POST"])
