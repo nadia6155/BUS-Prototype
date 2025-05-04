@@ -130,7 +130,6 @@ def student_profile(studentID):
         return redirect(url_for('student_profile', studentID=current_user.id))
 
 
-
     #Deleting hobbies and Interests
     if choose_form.validate_on_submit():
 
@@ -236,9 +235,9 @@ def book_meeting():
         db.session.commit()
         flash('Meeting booked!', 'success')
 
-        # # rewards
-        # current_user.points = current_user.points + 5
-        # db.session.commit()
+        # rewards
+        current_user.points = current_user.points + 5
+        db.session.commit()
 
         return redirect(url_for('home'))
 

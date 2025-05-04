@@ -71,3 +71,4 @@ class Meeting(db.Model):
     email = db.Column(db.String(100))
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
+
