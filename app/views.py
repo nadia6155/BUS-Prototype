@@ -273,7 +273,7 @@ def book_meeting():
         flash('Meeting booked successfully!', 'success')
         return redirect(url_for('home'))
 
-    return render_template('generic_form.html', title='Schedule Meeting', form=form)
+    return render_template('book_meeting.html', title='Schedule Meeting', form=form)
 
 @app.route('/upcoming_meetings', methods=['GET', 'POST'])
 @login_required
