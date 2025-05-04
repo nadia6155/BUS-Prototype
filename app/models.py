@@ -7,7 +7,6 @@ from sqlalchemy.orm import relationship, mapped_column
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db, login
 from dataclasses import dataclass
-import datetime
 from datetime import datetime
 
 @dataclass
