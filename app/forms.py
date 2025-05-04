@@ -86,10 +86,10 @@ class AddHobbiesAndInterestsForm(FlaskForm):
     submit = SubmitField('Add Hobbies and Interests')
 
 # meeting booking form
-class MeetingForm(FlaskForm):
-    date = DateField('Date', validators=[DataRequired()], format='%d-%m-%Y')
-    time = TimeField('Time', validators=[DataRequired()], format='%H:%M')
-    submit = SubmitField('Book Meeting')
+class ScheduleMeetingForm(FlaskForm):
+    date = SelectField('Choose Date', choices=[], validators=[DataRequired()])
+    time_slot = SelectField('Choose Time',choices=[('09:00 AM', '09:00 AM'),('10:00 AM', '10:00 AM'),('11:00 AM', '11:00 AM'),('12:00 PM', '12:00 PM'),('02:00 PM', '02:00 PM'),('03:00 PM', '03:00 PM')],validators=[DataRequired()])
+    submit = SubmitField('Confirm Meeting')
 
 # event calender form
 class EventForm(FlaskForm):

@@ -1,14 +1,14 @@
 from flask import render_template, redirect, url_for, flash, request, send_file, send_from_directory
 from app import app
 from app.models import User, Hobbies, Interests, Meeting
-from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm, MeetingForm
+from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm, ScheduleMeetingForm
 from flask_login import current_user, login_user, logout_user, login_required, fresh_login_required
 import sqlalchemy as sa
 from app import db
 from urllib.parse import urlsplit
 from app.models import Event
 from app.forms import EventForm
-# from datetime import datetime
+from datetime import datetime,timedelta
 import datetime
 import csv
 import io
@@ -224,29 +224,62 @@ def register():
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
+#BookMeeting
 @app.route('/book_meeting', methods=['GET', 'POST'])
 @login_required
 def book_meeting():
-    form=MeetingForm()
+    form = ScheduleMeetingForm()
+
+    today = datetime.today().date()
+    form.date.choices = [
+        (str(today + timedelta(days=i)),
+         (today + timedelta(days=i)).strftime('%A %d %B')) for i in range(5)
+    ]
+
     if form.validate_on_submit():
-        meeting = Meeting(
-            name=current_user.first_name,
-            email=current_user.email,
-            date=str(form.date.data),
-            time=str(form.time.data)
-        )
+        date = datetime.strptime(form.date.data, '%Y-%m-%d').date()
+        slot = form.time_slot.data
+
+        q=db.select(Meeting).where(Meeting.date==date,Meeting.time_slot==slot)
+        z=db.session.scalar(q)
+        if z:
+            flash('This time slot has already been booked!!! Please choose another slot!!', 'danger')
+            return redirect(url_for('book_meeting'))
+
+        meeting = Meeting(user_id=current_user.id, date=date, time_slot=slot)
         db.session.add(meeting)
         db.session.commit()
-        flash('Meeting booked!', 'success')
-
-        # rewards
-        current_user.points = current_user.points + 5
-        db.session.commit()
-
+        flash('Meeting booked successfully!', 'success')
         return redirect(url_for('home'))
 
+    return render_template('generic_form.html', title='Schedule Meeting', form=form)
 
-    return render_template('book_meeting.html', title='Meeting', form=form)
+@app.route('/upcoming_meetings', methods=['GET', 'POST'])
+@login_required
+def upcoming_meetings():
+    q=db.select(Meeting).where(Meeting.user_id == current_user.id)
+    z=db.session.scalars(q).all()
+    form=ChooseForm()
+    if not z:
+        flash('You have no upcoming meetings.', 'info')
+    return render_template('upcoming_meetings.html', title='Upcoming Meetings', z=z,form=form)
+
+
+@app.route('/cancel_meeting', methods=['POST'])
+@login_required
+def cancel_meeting():
+    form = ChooseForm()
+    if form.validate_on_submit():
+        u=db.session.get(Meeting,int(form.choice.data))
+        db.session.delete(u)
+        db.session.commit()
+        q = db.select(Meeting)
+        z = db.session.scalars(q)
+        flash('Meeting cancelled','success')
+        return render_template('upcoming_meetings.html', title="Upcoming Meetings", form=form, z=z)
+    return render_template('upcoming_meetings.html', title="Upcoming Meetings", form=form)
+
+
 
 # event calender feature
 
@@ -286,11 +319,6 @@ def delete_event(event_id):
     db.session.commit()
     flash('Event deleted successfully!', 'success')
     return redirect(url_for('events'))
-
-
-
-
-
 
 
 # Error handlers

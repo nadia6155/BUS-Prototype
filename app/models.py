@@ -32,6 +32,9 @@ class User(UserMixin, db.Model):
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
 
+    #Meeting
+    meetings: so.Mapped[list['Meeting']] = relationship(back_populates='user', cascade="all,delete-orphan")
+
     def __repr__(self):
         pwh = 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
         return f'User(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, role={self.role}, phone={self.phone}, pwh={pwh})'
@@ -65,11 +68,16 @@ class Interests(db.Model):
 
 # meetings booked table
 class Meeting(db.Model):
-    meeting_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    date = db.Column(db.String(20))
-    time = db.Column(db.String(20))
+    __tablename__ = 'meetings'
+    id: so.Mapped[int] = so.mapped_column(primary_key=True)
+    date:so.Mapped[datetime.date] = so.mapped_column(sa.Date)
+    time_slot:so.Mapped[str] = so.mapped_column(sa.String(10))
+
+    user_id: so.Mapped[int] = so.mapped_column(ForeignKey('users.id'), index=True)
+    user: so.Mapped['User'] = relationship(back_populates='meetings')
+    # __table_args__ = (sa.UniqueConstraint('date', 'time_slot'),)
+    def __repr__(self):
+        return f'Meeting(id={self.id}, date={self.date}, time_slot={self.time_slot},user_id={self.user_id})'
 
 # event calender table
 class Event(db.Model):
