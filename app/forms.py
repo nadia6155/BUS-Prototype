@@ -101,5 +101,5 @@ class EventForm(FlaskForm):
     location = StringField('Location', validators=[Optional()])
     mode = SelectField('Mode', choices=[('Online', 'Online'), ('In-person', 'In-person')], validators=[DataRequired()])
     link = StringField('Online Link', validators=[Optional()])
-    category = SelectField('Category', choices=[('University', 'University'), ('Society', 'Society'), ('Uni Support', 'Uni Support')], validators=[DataRequired()])
+    category = SelectField('Category', choices=[('Academics', 'Academics'), ('Well-being', 'Well-being'), ('Other', 'Other')], validators=[DataRequired()])
     submit = SubmitField('Add Event')
