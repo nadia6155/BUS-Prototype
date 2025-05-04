@@ -255,7 +255,7 @@ def book_meeting():
             id=current_user.id,
             name=current_user.first_name,
             email=current_user.email,
-            date=str(form.date.data),
+            date=form.date.data,
             time_slot=str(form.time_slot.data),
             staff_name=(form.staff.data)
         )
@@ -273,7 +273,7 @@ def book_meeting():
         flash('Meeting booked successfully!', 'success')
         return redirect(url_for('home'))
 
-    return render_template('generic_form.html', title='Schedule Meeting', form=form)
+    return render_template('book_meeting.html', title='Schedule Meeting', form=form)
 
 @app.route('/upcoming_meetings', methods=['GET', 'POST'])
 @login_required
