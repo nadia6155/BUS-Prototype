@@ -255,7 +255,7 @@ def book_meeting():
             id=current_user.id,
             name=current_user.first_name,
             email=current_user.email,
-            date=str(form.date.data),
+            date=form.date.data,
             time_slot=str(form.time_slot.data),
             staff_name=(form.staff.data)
         )

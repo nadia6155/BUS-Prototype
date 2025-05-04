@@ -73,10 +73,10 @@ class Interests(db.Model):
 class Meeting(db.Model):
     __tablename__ = 'meetings'
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(sa.String(100))
-    email: Mapped[str] = mapped_column(sa.String(100))
-    date: so.Mapped[str] = mapped_column(sa.String(20))
-    time_slot: so.Mapped[str] = mapped_column(sa.String(20))
+    name: so.Mapped[str] = so.mapped_column(sa.String(100))
+    email: so.Mapped[str] = so.mapped_column(sa.String(100))
+    date: so.Mapped[datetime.date] = so.mapped_column(sa.Date)
+    time_slot: so.Mapped[str] = so.mapped_column(sa.String(20))
     #date:so.Mapped[datetime.date] = so.mapped_column(sa.Date)
     #time_slot:so.Mapped[str] = so.mapped_column(sa.String(10))
 
