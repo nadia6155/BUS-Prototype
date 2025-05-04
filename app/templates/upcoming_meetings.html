@@ -9,7 +9,6 @@
 <table class="table table-bordered">
     <thead>
         <tr class="table-dark">
-            <th>Day</th>
             <th>Date</th>
             <th>Time</th>
             <th>Cancel Meeting</th>
@@ -17,8 +16,7 @@
     </thead>
     {% for i in z %}
         <tr class="table-info">
-            <td>{{ i.date.strftime('%A') }}</td>
-            <td>{{ i.date.strftime('%d-%m-%Y') }}</td>
+            <td>{{ i.date }}</td>
             <td>{{ i.time_slot }}</td>
             <td>
                     <form action="{{ url_for('cancel_meeting') }}" method="post">
