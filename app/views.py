@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash, request, send_file, send_from_directory
 from app import app
-from app.models import User, Hobbies, Interests, Meeting
+from app.models import User, Hobbies, Interests, Meeting, Notification
 from app.forms import ChooseForm, LoginForm, RegisterForm, AddHobbiesAndInterestsForm, EditPersonalDetailsForm, MeetingForm
 from flask_login import current_user, login_user, logout_user, login_required, fresh_login_required
 import sqlalchemy as sa
@@ -205,18 +205,53 @@ def register():
 @login_required
 def book_meeting():
     form=MeetingForm()
+
+    # put only staff users in form select field
+    staff_users = User.query.filter_by(role='Staff').all()
+    form.staff.choices = [(User.first_name, f"{user.first_name}") for user in staff_users]
+
     if form.validate_on_submit():
         meeting = Meeting(
             name=current_user.first_name,
             email=current_user.email,
             date=str(form.date.data),
-            time=str(form.time.data)
+            time=str(form.time.data),
+            staff_name=(form.staff.data)
         )
         db.session.add(meeting)
+
+        # notification to the staff member
+        notification = Notification(
+            message=f"A meeting has been booked by {current_user.first_name}",
+            user_id=int(form.staff.data)
+        )
+        db.session.add(notification)
+
         db.session.commit()
         flash('Meeting booked!', 'success')
         return redirect(url_for('home'))
     return render_template('book_meeting.html', title='Meeting', form=form)
+
+# notifications
+@app.route('/notifications')
+@login_required
+def notifications():
+    query = db.select(Notification).where(Notification.user_id == current_user.id)
+    notifications = db.session.scalars(query).all()
+    return render_template('notifications.html', notifications=notifications, title="Notifications")
+
+
+
+#@app.route('/notifications', methods=['GET', 'POST'])
+#@login_required
+#def notifications():
+ #   query = db.select(Notification).where(Notification.user_id == current_user.id)
+  #  notifications = db.session.scalars(query).all()
+    # get notifs for logged in user
+    #notifications = Notification.query.filter_by(user_id=current_user.id).all()
+   # return render_template('notifications.html', notifications=notifications)
+
+
 
 # event calender feature
 

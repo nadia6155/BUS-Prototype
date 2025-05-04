@@ -28,6 +28,8 @@ class User(UserMixin, db.Model):
     hobbies: so.Mapped[list['Hobbies']] = relationship(back_populates='user', cascade='all, delete-orphan')
     interests: so.Mapped[list['Interests']] = relationship(back_populates='user', cascade='all, delete-orphan')
 
+    # needs 1 to * rel to notification table
+    notification = db.relationship('Notification', backref='user')
 
     def __repr__(self):
         pwh= 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
@@ -67,6 +69,14 @@ class Meeting(db.Model):
     email = db.Column(db.String(100))
     date = db.Column(db.String(20))
     time = db.Column(db.String(20))
+
+# notification table
+class Notification(db.Model):
+    __tablename__ = 'notification'
+    notification_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, ForeignKey('users.id'), nullable=False)
+    #user_name = db.Column(db.String(64), db.ForeignKey('users.first_name'))
+    message = db.Column(db.String(100), nullable=False)
 
 # event calender table
 class Event(db.Model):
