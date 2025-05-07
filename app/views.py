@@ -233,17 +233,9 @@ def book_meeting():
 
     # put only staff users in form select field
     staff_users = User.query.filter_by(role='Staff').all()
-    #form.staff.choices = [(user.first_name, f"{user.first_name}") for user in staff_users]
     form.staff.choices = [(user.id, user.first_name) for user in staff_users]
 
-    # today = datetime.today().date()
-    #form.date.choices = [
-      #  (str(today + timedelta(days=i)),
-       #  (today + timedelta(days=i)).strftime('%A %d %B')) for i in range(5)
-    #]
-
     if form.validate_on_submit():
-        #date = datetime.strptime(form.date.data, '%Y-%m-%d').date()
         date = form.date.data
         slot = form.time_slot.data
 
@@ -254,7 +246,7 @@ def book_meeting():
             return redirect(url_for('book_meeting'))
 
         meeting = Meeting(
-            id=current_user.id,
+            user_id=current_user.id,
             name=current_user.first_name,
             email=current_user.email,
             date=form.date.data,
@@ -270,6 +262,8 @@ def book_meeting():
         )
         db.session.add(notification)
 
+        #rewards
+        current_user.points = current_user.points + 5
 
         db.session.commit()
         flash('Meeting booked successfully!', 'success')
