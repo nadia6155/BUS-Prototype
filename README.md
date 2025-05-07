@@ -1,6 +1,6 @@
 # BUS-Prototype
 
-1. Brief Description of the system and it’s purpose (200 words)  
+1. Brief Description of the system and it’s purpose
 
 The system ‘UniSupport’ is a web application used to assist university students struggling with their mental wellbeing. As university wellbeing resources are often difficult to find, the purpose of this system is to ease the stress students experience by creating a convenient and easy-to-use application that enables students to find mental wellbeing resources provided by the university and make connections to other students. Ultimately, the goal of the system is to support students and encourage positivity. 
 
