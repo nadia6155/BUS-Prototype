@@ -15,7 +15,12 @@ The system allows users to register for a password-protected account using their
   - Install Conda packages used in the app into your environment 
   - Edit configurations to module = ‘flask’ and script parameters = ‘run’ 
   - Open the web application
-  - Sign into the app using the login (tom@student.com / Mypassword123) to test student features and login (trq@staff.com / Mypassword123) to test staff features  
+  - Run the web application
+  - Open the URL in a browser
+  - If using the application for the first time, register as a new user by specifying your role ('staff', 'student', 'admin').  
+  - To explore 'student' user features, please register and login as a 'student'.
+  - To explore 'staff' user features, please register and login as a 'staff'.
+  
 
 3. Programming languages, frameworks, or tools used 
 
