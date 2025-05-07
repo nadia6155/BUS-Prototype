@@ -36,9 +36,11 @@ class User(UserMixin, db.Model):
     user_meeting: so.Mapped[list['Meeting']] = relationship(back_populates='user', foreign_keys='Meeting.user_id', cascade="all, delete-orphan")
     staff_meeting: so.Mapped[list['Meeting']] = relationship(back_populates='staff', foreign_keys='Meeting.staff_id', cascade="all, delete-orphan")
 
-    # notification-user relationship
-    notification: so.Mapped[list['Notification']] = relationship(back_populates='user', cascade="all,delete-orphan")
-
+    # notification-user composition relationship
+    notifications: so.Mapped[list['Notification']] = relationship(back_populates='user',
+                                                                  cascade="all,delete-orphan",
+                                                                  passive_deletes=True,
+                                                                  single_parent=True)
     def __repr__(self):
         pwh = 'None' if not self.password_hash else f'...{self.password_hash[-5:]}'
         return f'User(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, email={self.email}, role={self.role}, phone={self.phone}, pwh={pwh})'
@@ -95,9 +97,9 @@ class Notification(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
     message: Mapped[str] = mapped_column(sa.String(100))
 
-    # notification-user relationship
-    user_id: so.Mapped[int] = mapped_column(ForeignKey('users.id'), index=True)
-    user: so.Mapped['User'] = relationship(back_populates='notification')
+    # notification-user composition relationship
+    user_id: so.Mapped[int] = mapped_column(ForeignKey('users.id', ondelete="CASCADE"), index=True)
+    user: so.Mapped['User'] = relationship(back_populates='notifications')
 
 # event calender table
 class Event(db.Model):

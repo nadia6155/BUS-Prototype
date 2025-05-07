@@ -1,6 +1,6 @@
 # BUS-Prototype
 
-1. Brief Description of the system and it’s purpose (200 words)  
+1. Brief Description of the system and it’s purpose
 
 The system ‘UniSupport’ is a web application used to assist university students struggling with their mental wellbeing. As university wellbeing resources are often difficult to find, the purpose of this system is to ease the stress students experience by creating a convenient and easy-to-use application that enables students to find mental wellbeing resources provided by the university and make connections to other students. Ultimately, the goal of the system is to support students and encourage positivity. 
 
@@ -52,7 +52,7 @@ Student users can access a meeting booking system through a navigation bar link.
 | Student name and ID  | Contribution (%) | Key contributions  | Signature |
 | ------------- | ------------- | ------------- |------------- |
 | Nadia Majeed (1793059)  | 20%  | Meeting booking form and notification system  |N.Majeed  |
-| Niveditha Manikandan (2864127)  | 20% |Meeting booking form, viewing & cancelling meetings  |Niveditha |
-| Content Cell  |Content Cell  |Content Cell  |Content Cell  |
-| Content Cell  |Content Cell  |Content Cell  |Content Cell  |
+| Niveditha Manikandan (2864127)  | 20% | Meeting booking form, viewing & cancelling meetings  |Niveditha |
+| Sonal (1926307) | 20%  | Registeration Form, Login, Student Profile, Rewards, Add/Delete Hobbies & Interests, Edit personal details, Navbar & Webpage styling | Sonal |
+| Navneet (2296362) | 20% | Registeration Form, Login, Student Profile, Rewards, Add/Delete Hobbies & Interests, Edit personal details, Navbar & Webpage styling | Navneet |
 | Content Cell  |Content Cell  |Content Cell  |Content Cell  |
