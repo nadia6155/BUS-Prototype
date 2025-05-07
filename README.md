@@ -47,7 +47,7 @@ Student users can access a meeting booking system through a navigation bar link.
 | Student name and ID  | Contribution (%) | Key contributions  | Signature |
 | ------------- | ------------- | ------------- |------------- |
 | Nadia Majeed (1793059)  | 20%  | Meeting booking form and notification system  |N.Majeed  |
-| Content Cell  | Content Cell  |Content Cell  |Content Cell  |
+| Niveditha Manikandan (2864127)  | 20% |Meeting booking form, viewing & cancelling meetings  |Niveditha |
 | Content Cell  |Content Cell  |Content Cell  |Content Cell  |
 | Content Cell  |Content Cell  |Content Cell  |Content Cell  |
 | Content Cell  |Content Cell  |Content Cell  |Content Cell  |
