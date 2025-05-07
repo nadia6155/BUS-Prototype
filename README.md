@@ -54,5 +54,5 @@ Student users can access a meeting booking system through a navigation bar link.
 | Nadia Majeed (1793059)  | 20%  | Meeting booking form and notification system  |N.Majeed  |
 | Niveditha Manikandan (2864127)  | 20% | Meeting booking form, viewing & cancelling meetings  |Niveditha |
 | Sonal (1926307) | 20%  | Registeration Form, Login, Student Profile, Rewards, Add/Delete Hobbies & Interests, Edit personal details, Navbar & Webpage styling | Sonal |
-| Content Cell  |Content Cell  |Content Cell  |Content Cell  |
+| Navneet (2296362) | 20% | Registeration Form, Login, Student Profile, Rewards, Add/Delete Hobbies & Interests, Edit personal details, Navbar & Webpage styling | Navneet |
 | Content Cell  |Content Cell  |Content Cell  |Content Cell  |
