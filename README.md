@@ -44,7 +44,8 @@ Student users can access a meeting booking system through a navigation bar link.
 
 5. Contribution table 
 
-| Student name and ID  | Contribution (%) |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| Student name and ID  | Contribution (%) | Key contributions  | Signature |
+| ------------- | ------------- | ------------- |------------- |
+| Nadia Majeed (1793059)  | 20%  | Meeting booking form and notification system  |N.Majeed  |
+| Content Cell  | Content Cell  |Content Cell  |Content Cell  |
+| Content Cell  |Content Cell  |Content Cell  |Content Cell  |
