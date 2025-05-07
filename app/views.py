@@ -257,7 +257,7 @@ def book_meeting():
 
         # notification to the staff member
         notification = Notification(
-            message=f"A meeting has been booked by {current_user.first_name}",
+            message=f"A meeting has been booked with you by {current_user.first_name}",
             user_id=int(form.staff.data)
         )
         db.session.add(notification)
