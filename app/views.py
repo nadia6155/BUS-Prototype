@@ -254,7 +254,7 @@ def book_meeting():
             return redirect(url_for('book_meeting'))
 
         meeting = Meeting(
-            id=current_user.id,
+            user_id=current_user.id,
             name=current_user.first_name,
             email=current_user.email,
             date=form.date.data,
