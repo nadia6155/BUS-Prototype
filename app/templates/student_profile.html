@@ -61,8 +61,18 @@
         </table>
     </div>
 
-    <h4 class="mb-3">Your Hobbies & Interests</h4>
+    {% if hobbies_list and interests_list %}
+        <h4 class="mb-3">Your Hobbies & Interests</h4>
+    {% elif hobbies_list %}
+        <h4 class="mb-3">Your Hobbies</h4>
+    {% elif interests_list %}
+        <h4 class="mb-3">Your Interests</h4>
+    {% endif %}
+
+    {% if hobbies_list or interests_list %}
     <div class="row mb-5">
+
+        {% if hobbies_list %}
         <div class="col-lg-6">
             <div class="table-responsive">
                 <table class="table table-bordered text-center align-middle">
@@ -94,7 +104,9 @@
                 </table>
             </div>
         </div>
+        {% endif %}
 
+        {% if interests_list %}
         <div class="col-lg-6">
             <div class="table-responsive">
                 <table class="table table-bordered text-center align-middle">
@@ -126,7 +138,10 @@
                 </table>
             </div>
         </div>
+        {% endif %}
+
     </div>
+    {% endif %}
 
     {% if form %}
         {% if choose_form.choice.data == student_id|string %}
@@ -147,7 +162,5 @@
         </form>
         {% endif %}
     {% endif %}
-
 </div>
-
 {% endblock %}
