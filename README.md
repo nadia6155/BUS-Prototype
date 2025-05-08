@@ -20,6 +20,7 @@ The system allows users to register for a password-protected account using their
   - If using the application for the first time, register as a new user by specifying your role ('staff', 'student', 'admin').  
   - To explore 'student' user features, please register and login as a 'student'.
   - To explore 'staff' user features, please register and login as a 'staff'.
+  - Alternatively, you may use our mock data to login, which is viewable in debug_utils.py
   
 
 3. Programming languages, frameworks, or tools used 
