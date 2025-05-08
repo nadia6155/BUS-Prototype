@@ -55,4 +55,4 @@ Student users can access a meeting booking system through a navigation bar link.
 | Niveditha Manikandan (2864127)  | 20% | Meeting booking form, viewing & cancelling meetings  |Niveditha |
 | Sonal (1926307) | 20%  | Registeration Form, Login, Student Profile, Rewards, Add/Delete Hobbies & Interests, Edit personal details, Navbar & Webpage styling | Sonal |
 | Navneet (2296362) | 20% | Registeration Form, Login, Student Profile, Rewards, Add/Delete Hobbies & Interests, Edit personal details, Navbar & Webpage styling | Navneet |
-| Content Cell  |Content Cell  |Content Cell  |Content Cell  |
+| Eshita Sohani (2775276)  |20% | Event Calendar form for staff and calendar view page for students  | Eshita |
