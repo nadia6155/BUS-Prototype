@@ -1,0 +1,750 @@
+commit 8ba73e6a3d50726d976e09d8c0ff5ad6095bcc81
+Merge: a7b6d70 207709e
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Thu May 8 14:28:19 2025 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+commit a7b6d705e746ef362fbc8e32583b2b14de606fbe
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Thu May 8 14:28:01 2025 +0100
+
+    edit profile code
+
+commit 207709e8f4743ca161a630a3d6bc61f9f842b3af
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Thu May 8 14:14:47 2025 +0100
+
+    Update README.md
+    
+    Updated Readme.md contribution part
+
+commit 1504cdb6dde911131689ad8f0240f9898e564375
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Thu May 8 14:00:59 2025 +0100
+
+    book meeting test code
+
+commit 689997746ba0523231f2ee3f7f3b2ceca0388feb
+Merge: 274f068 f45cc28
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed May 7 22:52:06 2025 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+commit 274f068ef24e537fd002e24c22244da402041c36
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed May 7 22:51:47 2025 +0100
+
+    Added a missing decorator in views.py
+
+commit f45cc28050c91c59520057b5c10eb6f56a644354
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed May 7 16:48:32 2025 +0100
+
+    updated meeting notification message
+
+commit 5698377b1be9756fef3d11f9abb1b0c43ace7b5c
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed May 7 16:30:09 2025 +0100
+
+    user-notif composition relationship
+
+commit 09d0bf162a9f74d4c698e5cb5abd7e7b8d639a39
+Author: Navneet Kaur <nxk162@student.bham.ac.uk>
+Date:   Wed May 7 16:02:08 2025 +0100
+
+    Update README.md
+
+commit 01b81641ae5fb1ed5b85496e0d02b2684094a5d6
+Author: Sonal <162667629+14-sonal-1999@users.noreply.github.com>
+Date:   Wed May 7 16:01:13 2025 +0100
+
+    Update README.md
+
+commit 0bf09a0ff8ceccd93b1b550ddb3f368f9fe4dbe8
+Author: Sonal <162667629+14-sonal-1999@users.noreply.github.com>
+Date:   Wed May 7 16:00:27 2025 +0100
+
+    Update README.md
+
+commit bb9e01b12acc4d0cbaf280839908b120209aa1bb
+Author: Sonal <162667629+14-sonal-1999@users.noreply.github.com>
+Date:   Wed May 7 15:59:07 2025 +0100
+
+    Update README.md
+
+commit badd00818fb511f5325c6fc685cef8f870857691
+Merge: 4f81415 92ed133
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed May 7 15:43:01 2025 +0100
+
+    Merge remote-tracking branch 'origin/main'
+
+commit 4f8141567b958d7829f2d07e14ff9e081bdb891e
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed May 7 15:42:41 2025 +0100
+
+    Updated the student profile page appearance.
+
+commit 92ed13389d074ef5262a24b07861faf93f4f187d
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed May 7 15:24:34 2025 +0100
+
+    tidied code / added comments
+
+commit e577de6f94d6641af2d082c41a7ddb50d11f10c1
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed May 7 15:10:00 2025 +0100
+
+    fixed book meeting bug
+
+commit 451ab9243d6bf7b6a4923fd6a03f697881783f18
+Author: Sonal <162667629+14-sonal-1999@users.noreply.github.com>
+Date:   Wed May 7 14:49:36 2025 +0100
+
+    Update README.md
+
+commit 2fa4d897c1c6a6500ff98e6a87fdf4b0d39ee5a5
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed May 7 14:26:32 2025 +0100
+
+    Updated the student profile page appearance.
+
+commit 00002a9b550e63eb05d7c3710e1fcebca0eaf833
+Author: Niveditha Manikandan <nxx427@student.bham.ac.uk>
+Date:   Wed May 7 13:38:37 2025 +0100
+
+    Update README.md
+
+commit b3f40f38e5032ebed34d399c65218a3721bfbdd8
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Wed May 7 12:08:38 2025 +0100
+
+    Update README.md
+
+commit e12b554b5379a0ec59ac830f81f8fbbd4bc7f74d
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Wed May 7 12:08:04 2025 +0100
+
+    Update README.md
+
+commit f34dbfbdd2728939968394968c612ac8bbed8c02
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Wed May 7 12:04:47 2025 +0100
+
+    Update README.md
+
+commit fa3b22e7be3281ef17c5364583f0049339abd6c2
+Author: nivedithamanikandan <nxx427@student.bham.ac.uk>
+Date:   Wed May 7 09:02:09 2025 +0100
+
+    upcoming_meetings.html table UI fixed
+
+commit 08a4e6d2d5d9ef0f78560a6933ba3fcdb85e5896
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Tue May 6 15:10:08 2025 +0100
+
+    Updating gitignore
+
+commit 9eefc00d21490dabdd5a823aaaee854aeed8bb61
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Mon May 5 09:18:06 2025 +0100
+
+    Updated the register user flash message
+
+commit 7f55942e1463f49e9a732eb25b65443374e1d147
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Mon May 5 09:11:29 2025 +0100
+
+    Updated the user registration process with a flash message
+
+commit 49faf368a977039a424984f7b0c5476ea2dd3690
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Mon May 5 00:32:13 2025 +0100
+
+    fixed bugs in meetings & notifs
+
+commit 3ffbe94757110e5013a856c8a5f68287700b9953
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun May 4 23:15:41 2025 +0100
+
+    Update forms.py
+    
+    Updated the event category options with meaningful names.
+
+commit d126c28a151fd8ab59a8d3f58a3ca723608123b6
+Author: nivedithamanikandan <nxx427@student.bham.ac.uk>
+Date:   Sun May 4 23:02:03 2025 +0100
+
+    upcoming_meetings.html error fixed
+
+commit f240c615774c05d819c74eb3dfc494df3485fd1a
+Merge: 1791494 8f305db
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Sun May 4 22:35:51 2025 +0100
+
+    Merge pull request #10 from nadia6155/latest-changes
+    
+    fixed date issue by storing as Date Object
+
+commit 8f305db69fa635280e44c97848c6f2ad28cae1ee
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Sun May 4 22:32:22 2025 +0100
+
+    fixed date time form issue
+
+commit aba41b72b77e6b2e001ece7978fe576204bec945
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Sun May 4 22:27:51 2025 +0100
+
+    fixed date time form issue
+
+commit 17914948460a9c8eabd5295077e819334e87e530
+Merge: 319b065 4733778
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Sun May 4 21:57:47 2025 +0100
+
+    Merge pull request #9 from nadia6155/latest-changes
+    
+    added notification system to meeting booking
+
+commit 4733778e0aae3486e2acd5bad0954a4d9eadf70f
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Sun May 4 20:08:40 2025 +0100
+
+    added notification system to meeting booking
+    fixed bugs in base.html
+    changed meeting & notification models
+
+commit 319b065266101dec4f1eaf2184dad73a7e488deb
+Author: nivedithamanikandan <nxx427@student.bham.ac.uk>
+Date:   Sun May 4 18:20:25 2025 +0100
+
+    added book meeting feature
+
+commit 67d52f90d7fcb7e8007a0bdd9828f9855c125817
+Merge: 18c58b5 3eaba55
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun May 4 17:58:30 2025 +0100
+
+    Merge pull request #7 from nadia6155/feature/eventcalender
+    
+    updated add_event.html , base.html, events.html and some comments in event calender feature.
+
+commit 3eaba5521f0d8008f0f965287b3b75fb23bb3cd9
+Author: Eshis <ishi.sohani@gmail.com>
+Date:   Sun May 4 17:55:03 2025 +0100
+
+    updated add_event.html , base.html, events.html and some comments in views.py for event calender feature
+
+commit 18c58b598aee5d954f663d54980c45f675506b49
+Merge: 00d9720 9c0958a
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun May 4 17:34:43 2025 +0100
+
+    Finishing Merge remote-tracking branch 'origin/feature/studentprofilewithrewards'
+
+commit 00d9720499dfa8235eb390bafe57755ecedcd7fc
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun May 4 17:15:21 2025 +0100
+
+    database reset
+
+commit a1a5321e574a112d047166ed89cd10b3ee6fbbee
+Merge: 0a9a55e cc9ba62
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun May 4 17:11:29 2025 +0100
+
+    Merge branch 'main' of github.com:nadia6155/BUS-Prototype
+
+commit 9c0958a13b64b409fff2fbddb042f5be9b03b3a5
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Sun May 4 16:46:27 2025 +0100
+
+    updated the db
+
+commit 0a9a55e53093802906efc6d79b0f3ca021035c98
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun May 4 16:32:59 2025 +0100
+
+    database reset
+
+commit 18fe45b4ca13e8b5101fb34fe1e3817cdfbeb5b7
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Sun May 4 16:11:25 2025 +0100
+
+    Added and Updated the rewards feature
+
+commit cc9ba6209a5d31b7492067c1d468c6a84990b1d3
+Author: Eshita <ishi.sohani@gmail.com>
+Date:   Tue Apr 29 21:40:40 2025 +0100
+
+    feat: enhance event management system with mode, category, and link support
+    
+    - Updated Event model to add 'mode', 'link', and 'category' fields
+    - Modified EventForm to allow staff to select event type and delivery mode
+    - Updated add_event.html to dynamically show/hide event link field based on mode
+    - Improved events.html to display event mode, link (clickable for online events), and category
+    - Applied database ALTER commands to safely add missing columns without deleting existing data
+    - Fixed base.html structure for consistent navigation and page layout
+    - Ensured no signup or reminder functionality is active as per updated requirements
+
+commit e34eb272045f321bef2151cd7c2f8cbd15c92e16
+Author: Eshita <ishi.sohani@gmail.com>
+Date:   Tue Apr 29 20:21:34 2025 +0100
+
+    feat: add event form and calendar display with datetime picker and upcoming event highlight
+    
+    - Created EventForm in forms.py to capture title, description, start time, end time, and location
+    - Configured start and end fields to use <input type="datetime-local"> for native calendar/time picker
+    - Added validation to ensure end time is after start time and both fields are in correct format
+    - Implemented special logic to highlight events under 24 hours (short events)
+    - Created add_event.html and events.html with Bootstrap-styled form and flash messages
+    - Integrated FullCalendar to dynamically display all upcoming events in a clean calendar view
+    - Connected form submission to calendar rendering so new events appear instantly
+
+commit 039c7e61d3307b94a92bad7d2ede8c9ed54bbc5f
+Merge: 3207190 058757b
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Tue Apr 29 17:34:30 2025 +0100
+
+    Merge pull request #4 from nadia6155/revert-3-feature/EventCalander
+    
+    Revert "Feature/event calander"
+
+commit 058757ba1a2a5345758fb7d4fe6f135e04d8e631
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Tue Apr 29 17:33:28 2025 +0100
+
+    Revert "Feature/event calander"
+
+commit 7b7215247d58c9d9a0c323eecc615c6b22a5f48b
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 29 16:55:15 2025 +0100
+
+    Added the code to calculate & maintain points streak
+
+commit d69dc805eeead00db36873a1cf87d059f6b9e1d4
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 29 16:54:23 2025 +0100
+
+    Updated the Users table in the db to show points and last login date
+
+commit 8594c5717b648309af546baa2ee6f4d47c64e38d
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 29 16:53:59 2025 +0100
+
+    Updated the form data validation
+
+commit 2c44023c104af1418a4de4a9dbd99953c56f2859
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 29 16:53:01 2025 +0100
+
+    Added the points feature in Student profile and meeting booking
+
+commit 257fc61396216341691a0159779ab32dc57dc2f2
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 29 16:52:25 2025 +0100
+
+    Updated the home webpage to show points earned
+
+commit 825460ad96d361d5e11b0abf3d116d69942a25a7
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 29 16:51:06 2025 +0100
+
+    Updated the db
+
+commit 3207190e9730886ff47282e34b0ab3d762160947
+Merge: 28a4039 d233958
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Tue Apr 29 15:04:34 2025 +0100
+
+    Merge pull request #3 from nadia6155/feature/EventCalander
+    
+    feat: add event form and calendar display with datetime picker and short-event highlight
+    
+    - Created EventForm in forms.py to capture title, description, start time, end time, and location
+    - Configured start and end fields to use <input type="datetime-local"> for native calendar/time picker
+    - Added validation to ensure end time is after start time and both fields are in correct format
+    - Implemented special logic to highlight events under 24 hours (upcoming events)
+    - Created calendar.html with Bootstrap-styled form and flash messages
+    - Integrated FullCalendar to dynamically display all upcoming events in a clean calendar view
+    - Connected form submission to calendar rendering so new events appear instantly
+
+commit a154c5d2cf4a960eb749e2d2b3d7c874a7d7980d
+Merge: bd39340 3669b10
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Mon Apr 28 20:42:57 2025 +0100
+
+    Merge branch 'feature/studentprofilewithrewards' of https://github.com/nadia6155/BUS-Prototype into feature/studentprofilewithrewards
+    
+    # Conflicts:
+    #       app/data/data.sqlite
+
+commit bd393405d827bbff5f4d202740194a2396dcd9bd
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Mon Apr 28 20:40:18 2025 +0100
+
+    Reset DB
+
+commit 28a40396d6f2eb7f6df72d3174bdb1f0148c45b8
+Merge: 8ff57ba 3669b10
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Sun Apr 27 17:15:41 2025 +0100
+
+    Merge pull request #2 from nadia6155/feature/studentprofilewithrewards
+    
+    Feature/studentprofile
+
+commit 3669b104326439895486d2d4c030c5e5ca2dc66f
+Merge: 07573d4 8ff57ba
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Sun Apr 27 17:12:41 2025 +0100
+
+    Merge branch 'main' into feature/studentprofilewithrewards
+
+commit 8ff57ba816ed7aa6fc893f1ee80b48551d164e46
+Merge: ef78859 735b767
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Sun Apr 27 16:51:00 2025 +0100
+
+    Merge pull request #1 from nadia6155/feature/book-meeting
+    
+    Feature/book meeting
+
+commit d233958723cbb1625961c7857d2841a15a96eb88
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 16:04:54 2025 +0100
+
+    Delete Event Calender/instance/events file
+    
+    Delete Event Calender/instance/events file for duplicate purpose
+
+commit 4de498630120f1e7b3d5ad6b6b0b02057f2d069d
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 16:04:07 2025 +0100
+
+    added event instance
+    
+    added event instance for event calender feature
+
+commit 9cdb1f44d9d350871737f1ca1a5c4438086d0bd9
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 16:03:32 2025 +0100
+
+    Create events
+    
+    added instances
+
+commit ba19b1ffebeddce2f1e0d950c5a59269c528013b
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 16:01:21 2025 +0100
+
+    added files in event calender feature
+    
+    added .flask.env config.py and run.py for event calender feature
+
+commit 6cfe1fefbad31f11647be6edb623d836593543b5
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 16:00:00 2025 +0100
+
+    Create .gitkeep
+    
+    added .gitkeep file in static folder for event calender feature
+
+commit a3bb32f39b9be03008a406caf4735a948d3ca04f
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 15:58:24 2025 +0100
+
+    uploaded error templates
+    
+    uploaded error templates for event calander feature
+
+commit 7e142205362c5a79b2674b1fdb3bc954c69a2ca2
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 15:57:09 2025 +0100
+
+    Create 403 error page
+    
+    Create 403 error page for event calender feature
+
+commit 030a47975aa26ec80772fe81f78ffb091eaf245c
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 15:55:37 2025 +0100
+
+    uploaded template files
+    
+    uploaded template files i.e add_event.html and events.html for event calender feature
+
+commit 3634ff6f265d91dbd3af825aa11831e053d0f15f
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 15:54:45 2025 +0100
+
+    Create base.html
+    
+    created base.html for event calender feature
+
+commit 4a7498a09f6d151fed66c0da741bb7490d588604
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 15:52:32 2025 +0100
+
+    uploaded files for event calender feature
+    
+    Uploaded _init.py, debug_utils.py, forms.py, models.py, views.py
+
+commit 6a0879b7a777f73ab1c05f25ecdc807285b6d0e0
+Author: Eshita Sohani <44199998+eshita01@users.noreply.github.com>
+Date:   Sun Apr 27 15:51:04 2025 +0100
+
+    Create readme.md
+    
+    Created readme.md for Event calender feature.
+
+commit 07573d479badace290ac30d50f6e693709b2b4f9
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sat Apr 26 18:37:57 2025 +0100
+
+    Worked on the aesthetics of the webpage
+
+commit 987db7c920f0b83b6223e009ffac4cc355a47d0d
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Fri Apr 25 22:24:42 2025 +0100
+
+    Style the student profile webpage
+
+commit bb9db44f3cad77ed652ad8b535f73e8d31d6ae1b
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 23:16:00 2025 +0100
+
+    Got the edit button working to update user's personal details
+
+commit 6e1b24c4fc50ef682c1b50310230a213d70a2b7f
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 23:15:05 2025 +0100
+
+    Updated edit personal details form
+
+commit 2d3521bf1e10794309e41d76ba1438ebeaf90be5
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 23:14:24 2025 +0100
+
+    Updated Student profile HTML page
+
+commit 5b7ea73b46867b356bd6376b374d9d974a7b488d
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 23:12:08 2025 +0100
+
+    Updated edit personal details HTML page
+
+commit 5a4c7ba5543c4eb9047f4d427d993c97f470996b
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 23:11:30 2025 +0100
+
+    Updated DB
+
+commit 1dffec7f26954d8bad7c0e1fd6852538e0ae8b3b
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 11:10:46 2025 +0100
+
+    Updated the edit profile view handler
+
+commit a983e5e3178bb06919d7cc7609f92d63bf98094c
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 11:07:56 2025 +0100
+
+    Updated the student profile web page
+
+commit c1c8a2efcda3f9f6bdf7bcc876ad3178e54f7f41
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 11:07:02 2025 +0100
+
+    Created new edit profile route and partically got edit to work
+
+commit 838847bdc70cdd1c46c968057dbf4e24b09614c7
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 24 11:05:43 2025 +0100
+
+    Created new page for edit profile
+
+commit e4d95434f7885f76fb5ad32aa208c9b3df1b4b94
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed Apr 23 23:03:28 2025 +0100
+
+    Created a new edit_profile view handler, to keep edit profile code seperate from student profile code.
+
+commit a9aa0fec5fb933a492368eb58897716da0fb3b78
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed Apr 23 22:56:11 2025 +0100
+
+    Edited the student profile view handler to exculde the edit buttton code.
+
+commit b309e0ef42d0e290283cc5a4abe660db1b070ccd
+Merge: ecc817a 899ece2
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed Apr 23 22:47:26 2025 +0100
+
+    Merge remote-tracking branch 'origin/feature/studentprofilewithrewards' into feature/studentprofilewithrewards
+    
+    # Conflicts:
+    #       app/data/data.sqlite
+
+commit ecc817a749ea45a665b298e9d2d9da86605e9745
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Wed Apr 23 20:56:25 2025 +0100
+
+    reset_db()
+
+commit 899ece294aad3da9a580d774f7832dd070b3c2d0
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Wed Apr 23 20:52:54 2025 +0100
+
+    Edit personal details form
+
+commit 8fb2d5e3931bfc500e496304c15c15cf2ded9d04
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Wed Apr 23 20:48:24 2025 +0100
+
+    Edit personal details form
+
+commit 735b76798a2aa5063e96c375f52ee908c75742a3
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed Apr 23 18:25:25 2025 +0100
+
+    book_meeting form created
+
+commit 97dc85508f29d808d43f6db163aefe6da766efd3
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed Apr 23 18:21:39 2025 +0100
+
+    Stop tracking .idea folder
+
+commit ae0f860ea656655a223f5c2eb8f0cc91f21ba252
+Author: nadia6155 <nadiamajeed1@outlook.com>
+Date:   Wed Apr 23 18:03:40 2025 +0100
+
+    book_meeting form created
+
+commit 8feb2e404a3b97e245e137936dcb7ebaa394f3b4
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Wed Apr 23 16:07:50 2025 +0100
+
+    Created edit personal details button and form
+
+commit b21754659eb94d3e8abe1338aa706d634ca9a249
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Wed Apr 23 16:07:31 2025 +0100
+
+    Created edit personal details button and form
+
+commit 37b7a973c11a4cfc32d5910c3ba2f2feb8b6580f
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 22 17:33:54 2025 +0100
+
+    Updated the forms.py
+
+commit 4503dae945ff80220670534ceff52b1bc2d2394c
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 22 17:32:37 2025 +0100
+
+    Updated the HTML for delete buttons
+
+commit 1bbe8112cce97131d5c7c25b914cf605b3b365c7
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Tue Apr 22 17:23:57 2025 +0100
+
+    Made Hobbies and Interests delete buttons work.
+
+commit ab1294fe06cb0a3bee8e89d857b3bd5be032ae29
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Mon Apr 21 16:36:39 2025 +0100
+
+    Removed unnecessary print messages
+
+commit 1b4fdcddd97ae10e9c31cfd23152f60462c44d56
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Mon Apr 21 15:41:54 2025 +0100
+
+    Adding flash messages
+
+commit 51464c34abcfba530cfad816f55f5161fb9ab758
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Mon Apr 21 15:23:29 2025 +0100
+
+    Display interest/hobbies id and updated flash messages
+
+commit aa47739cf00bd9d191e3afb72582bf76e5132cfc
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Mon Apr 21 15:16:12 2025 +0100
+
+    Display interest/hobbies id and updated flash messages
+
+commit 112f5aadaebe8a45f8b1149535093fd7f385d278
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Mon Apr 21 15:15:41 2025 +0100
+
+    Display interest/hobbies id and updated flash messages
+
+commit 0a7a5e001577798ff40838fbcde64fbcbc10e549
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun Apr 20 17:06:17 2025 +0100
+
+    Display interest/hobbies id and updated flash messages
+
+commit 4e10f425da1d86a057c9088d5d55c7be6b32bd8d
+Merge: 4df444c 5b03523
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun Apr 20 15:35:00 2025 +0100
+
+    Merge remote-tracking branch 'origin/feature/studentprofilewithrewards' into feature/studentprofilewithrewards
+    
+    # Conflicts:
+    #       app/views.py
+
+commit 4df444c3bef64692fed46ba98b46b8e56a86ed04
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun Apr 20 15:33:48 2025 +0100
+
+    Added a flash message in student profile
+
+commit ef78859c18051ce0f56869b0acd6a9bd806cad45
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun Apr 20 15:31:33 2025 +0100
+
+    Initial commit
+
+commit d7b944e359339f6ecd0fea94d1568fa2107d9506
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun Apr 20 15:29:58 2025 +0100
+
+    Initial commit
+
+commit 0194703e5d9131942891020ce6046bd084f753ec
+Author: Navneet <nxk162@student.bham.ac.uk>
+Date:   Sun Apr 20 15:28:29 2025 +0100
+
+    Initial commit
+
+commit 5b0352303ead924a58dad0171d7540d5fc008814
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Sun Apr 20 15:22:34 2025 +0100
+
+    Removed unnecessary code from view handler
+
+commit b0efae188f616ccf584956365a24bfb4a6056352
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Sun Apr 20 15:22:19 2025 +0100
+
+    Removed unnecessary code from view handler
+
+commit d04ef53e6bcee3138ec220f376d3bafe1f98ff64
+Author: Sonal <14.sonal.1999@gmail.com>
+Date:   Thu Apr 17 21:23:31 2025 +0100
+
+    Initial commit
+
+commit 11fa9d974ce2a68a23b0e0b62652fb01022e791c
+Author: nadia6155 <151586214+nadia6155@users.noreply.github.com>
+Date:   Mon Apr 7 15:22:22 2025 +0100
+
+    Initial commit
